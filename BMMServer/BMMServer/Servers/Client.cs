@@ -11,7 +11,6 @@ namespace BMMServer.Servers
     {
         private Socket clientSocket;
         private Server server;
-        private MySqlConnection mySqlConn;
 
         public int ClientUserId { get; set; }
 
@@ -26,13 +25,8 @@ namespace BMMServer.Servers
         {
             this.clientSocket = clientSocket;
             this.server = server;
-            mySqlConn = DataBaseConnectTool.Connect();
         }
 
-        public MySqlConnection MySQLconn
-        {
-            get { return mySqlConn; }
-        }
 
         public void Start()
         {
@@ -111,7 +105,6 @@ namespace BMMServer.Servers
         /// </summary>
         private void Close()
         {
-            DataBaseConnectTool.CloseConnection(mySqlConn);
             server.UserOffline(ClientUserId);
             server.RemoveClient(this);
             if (clientSocket != null)

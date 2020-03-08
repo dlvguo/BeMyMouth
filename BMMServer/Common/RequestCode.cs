@@ -1,5 +1,6 @@
 ﻿namespace Common
 {
+    //请求代码
     public enum RequestCode
     {
         None,
