@@ -11,15 +11,9 @@ namespace BMMServer.Servers
         public byte[] data { get; } = new byte[1024];
         private int dynamicLength = 0;
 
-        public int DynamicLength
-        {
-            get { return dynamicLength; }
-        }
+        public int DynamicLength => dynamicLength;
 
-        public int RemainSize
-        {
-            get { return data.Length - dynamicLength; }
-        }
+        public int RemainSize => data.Length - dynamicLength;
 
         /// <summary>
         /// 读取网络消息

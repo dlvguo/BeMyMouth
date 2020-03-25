@@ -8,7 +8,7 @@ namespace BMMServer.Models
 {
     [Table("user")]
     public class User
-    {   
+    {
         [Key]
         public int Id { get; set; }
         public string UserName { get; set; }
@@ -17,7 +17,6 @@ namespace BMMServer.Models
 
         public string NickName { get; set; }
         public bool IsLoginFirst { get; set; }//是否第一次登录
-
 
         //public User(int id, string username, string password, string nickName = "null", bool ilf = true)
         //{

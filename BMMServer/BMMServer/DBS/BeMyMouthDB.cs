@@ -9,8 +9,6 @@ namespace BMMServer.DBS
 
     public partial class BeMyMouthDB : DbContext
     {
-
-
         public DbSet<User> Users { get; set; }
         public DbSet<Friend> Friends { get; set; }
         public DbSet<Messages> Messages { get; set; }

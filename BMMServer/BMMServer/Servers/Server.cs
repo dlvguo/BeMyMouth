@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using BMMServer.Services;
+using Common;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -14,7 +15,7 @@ namespace BMMServer.Servers
         private List<Client> clientList = new List<Client>();
         private List<int> onLineUserIdList = new List<int>();
         private Dictionary<int, Client> UserIdClientDict = new Dictionary<int, Client>();
-        //private ControllerManager controllerManager;
+        private ServiceManger serviceManger;
 
         public Server()
         {
@@ -156,7 +157,7 @@ namespace BMMServer.Servers
         /// <param name="client"></param>
         public void HandleRequest(ControllerCode controllerCode, RequestCode requestCode, string data, Client client)
         {
-            //controllerManager.HandleRequest(controllerCode, requestCode, data, client);
+            serviceManger.HandleRequest(controllerCode, requestCode, data, client);
         }
     }
 }

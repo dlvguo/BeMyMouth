@@ -16,7 +16,7 @@ namespace BMMServer.Models
         public int SendId { get; set; }
 
         public int ReciveId { get; set; }
-        public bool HasRead { get; set; }
+        public bool HasRead { get; set; } = false;
 
     }
 }

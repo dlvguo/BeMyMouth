@@ -1,9 +1,11 @@
-﻿using BMMServer.Models;
+﻿using BMMServer.DBS;
+using BMMServer.Models;
 using BMMServer.Servers;
 using Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static BMMServer.DBS.BeMyMouthDBHelper;
 
 namespace BMMServer.Services
 {
@@ -26,11 +28,10 @@ namespace BMMServer.Services
         {
             Console.WriteLine("Login方法被调用了!" + "when " + DateTime.Now);
             string[] strs = data.Split(',');
-            bool isHave = true;// userDAO.VerifyUser(client.MySQLconn, strs[0], strs[1]);
+            bool isHave = VerifyUserInfo(strs[0], strs[1]);
             if (isHave)
             {
-                // TODO User user = userDAO.GetUserInfoByUserName(client.MySQLconn, strs[0]);
-                User user = new User();
+                User user = GetUserInfoByUserName(strs[0]);
                 string newData = user.Id.ToString() + ',' + user.UserName + ',' + user.NickName + ',' +
                                  user.IsLoginFirst.ToString() + ',' + ((int)ReturnCode.Success).ToString();
                 client.ClientUserId = user.Id;
@@ -55,7 +56,7 @@ namespace BMMServer.Services
             string[] strs = data.Split(',');
             string username = strs[0];
             string password = strs[1];
-            bool isSuccess = true;// userDAO.AddUSer(client.MySQLconn, username, password);
+            bool isSuccess = AddUser(username, password);
             if (isSuccess)
             {
                 return ((int)ReturnCode.Success).ToString();
@@ -76,7 +77,7 @@ namespace BMMServer.Services
         public string VerifyRepeat(string data, Client client, Server server)
         {
             Console.WriteLine(data);
-            bool isRepate = false;//= userDAO.VerifyRepate(client.MySQLconn, data);
+            bool isRepate = VerifyExist(data);
             if (isRepate)
             {
                 return ((int)ReturnCode.Fail).ToString();
@@ -99,7 +100,7 @@ namespace BMMServer.Services
             string[] strs = data.Split(',');
             int id = int.Parse(strs[0]);
             string nickname = strs[1];
-            bool isSuccess = false;//= userDAO.SetFirstLoginInformationById(client.MySQLconn, id, nickname);
+            bool isSuccess = SetFirstLoginInformationById(id, nickname);
             if (isSuccess)
             {
                 return ((int)ReturnCode.Success).ToString();
@@ -119,7 +120,7 @@ namespace BMMServer.Services
         /// <returns></returns>
         public string SearchFriend(string data, Client client, Server server)
         {
-            string s = "";// userDAO.GetUsersByNickname(client.MySQLconn, data);
+            string s = GetUsersByNickname(data);// userDAO.GetUsersByNickname(client.MySQLconn, data);
             if (string.IsNullOrEmpty(s))
             {
                 return "r";
@@ -138,13 +139,12 @@ namespace BMMServer.Services
         public string ApplyForAddFriend(string data, Client client, Server server)
         {
             string[] strs = data.Split(',');
-            int id = 0;//= userDAO.GetUserInfoByUserName(client.MySQLconn, strs[0]).Id;
+            int id = GetUserInfoByUserName(strs[0]).Id;//= userDAO.GetUserInfoByUserName(client.MySQLconn, strs[0]).Id;
             Client targetClient = server.GetOnlineClientById(id);
             if (targetClient == null)
             {
                 return null;
             }
-
             string broadcastData = strs[1] + ',' + strs[2];
             client.BroadcastMessage(targetClient, RequestCode.SendApplyNotice, broadcastData);
             return null;
@@ -160,12 +160,12 @@ namespace BMMServer.Services
         public string AddFriend(string data, Client client, Server server)
         {
             string[] strs = data.Split(',');
-            int oppositeId = int.Parse(strs[0]);
+            int pointId = int.Parse(strs[0]);
             int selfId = int.Parse(strs[1]);
-            //userDAO.AddFriendById(client.MySQLconn, oppositeId, selfId);
-            Client targetClient = server.GetOnlineClientById(oppositeId);
+            AddFriendById(pointId, selfId);
+            Client targetClient = server.GetOnlineClientById(pointId);
             client.BroadcastMessage(targetClient, RequestCode.GetFriendList,
-                GetFriendList(oppositeId.ToString(), targetClient, server));
+                GetFriendList(pointId.ToString(), targetClient, server));
             client.BroadcastMessage(client, RequestCode.GetFriendList,
                 GetFriendList(selfId.ToString(), client, server));
             /*无效*/
@@ -174,7 +174,7 @@ namespace BMMServer.Services
             //{
             //    GetFriendList(targetClient.ClientUserId.ToString(), targetClient, server);
             //}
-            return null;
+            return string.Empty;
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace BMMServer.Services
             Console.WriteLine(data);
             StringBuilder sb = new StringBuilder();
             int id = int.Parse(data);
-            string s = string.Empty;//= userDAO.GetFriendsIdById(client.MySQLconn, id);
+            string s = GetFriendsIdById(id);
             if (!string.IsNullOrEmpty(s))
             {
                 string[] strs = s.Split(',');
@@ -197,7 +197,7 @@ namespace BMMServer.Services
                 {
                     sb.Append(ids);
                     sb.Append(',');
-                    //sb.Append(userDAO.GetNicknameById(client.MySQLconn, int.Parse(ids)));
+                    sb.Append(GetNickNameById(int.Parse(ids)));
                     sb.Append(',');
                     if (server.IsOnline(int.Parse(ids)))
                     {
