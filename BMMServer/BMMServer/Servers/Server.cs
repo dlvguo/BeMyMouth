@@ -25,7 +25,7 @@ namespace BMMServer.Servers
         public Server(string ipStr, int port)
         {
             SetIpAndPort(ipStr, port);
-            //controllerManager = new ControllerManager(this);
+            serviceManger = new ServiceManger(this);
         }
 
         /// <summary>

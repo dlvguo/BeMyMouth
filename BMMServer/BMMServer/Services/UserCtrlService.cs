@@ -33,7 +33,7 @@ namespace BMMServer.Services
             {
                 User user = GetUserInfoByUserName(strs[0]);
                 string newData = user.Id.ToString() + ',' + user.UserName + ',' + user.NickName + ',' +
-                                 user.IsLoginFirst.ToString() + ',' + ((int)ReturnCode.Success).ToString();
+                                 user.IsFirstLogin.ToString() + ',' + ((int)ReturnCode.Success).ToString();
                 client.ClientUserId = user.Id;
                 server.AddOnLineUserId(user.Id);
                 return newData;

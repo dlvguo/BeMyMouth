@@ -16,7 +16,7 @@ namespace BMMServer.Models
         public string Password { get; set; }
 
         public string NickName { get; set; }
-        public bool IsLoginFirst { get; set; }//是否第一次登录
+        public bool IsFirstLogin { get; set; }//是否第一次登录
 
         //public User(int id, string username, string password, string nickName = "null", bool ilf = true)
         //{

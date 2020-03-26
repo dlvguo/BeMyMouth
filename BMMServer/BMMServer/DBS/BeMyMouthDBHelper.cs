@@ -322,7 +322,7 @@ namespace BMMServer.DBS
                         if (user.Id == id)
                         {
                             user.NickName = nickName;
-                            user.IsLoginFirst = false;
+                            user.IsFirstLogin = false;
                             break;
                         }
                     }
