@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Common;
+
+//请求管理
 public class RequestManager : BaseManager
 {
     public RequestManager(Facade facade) : base(facade)

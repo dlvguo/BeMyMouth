@@ -241,7 +241,7 @@ public class ChatPanel : BasePanel
     {
         qingKong.SetActive(true);
         allSend.SetActive(true);
-        LeapMotionController=Instantiate(LeapController);
+        LeapMotionController = Instantiate(LeapController);
         Transform tran = LeapMotionController.transform;
         LeapMotionController.transform.SetParent(Camera);
         LeapMotionController.transform.localPosition = tran.position;

@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using Common;
 using UnityEngine;
 
+//客户端连接管理
 public class ClientManager : BaseManager
 {
     public ClientManager(Facade facade) : base(facade)

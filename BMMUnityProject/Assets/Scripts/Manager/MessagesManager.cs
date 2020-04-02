@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using Common;
 using UnityEngine;
 
+//消息管理
 public class MessagesManager : BaseManager
 {
     public MessagesManager(Facade facade) : base(facade)
     {
     }
 
-//    private Dictionary<int,string> messagesDic=new Dictionary<int, string>();
+    //    private Dictionary<int,string> messagesDic=new Dictionary<int, string>();
     private RepeatableDictionary<int, string> messagesRdic = new RepeatableDictionary<int, string>();
 
     public void AddMessage(int id, string m)

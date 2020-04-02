@@ -176,9 +176,8 @@ public class Facade : MonoBehaviour
         swiMng.ChangeType();
     }
 
-    public SwitchManager.UserType GetType()
+    public new SwitchManager.UserType GetType()
     {
         return swiMng.GetType();
     }
-
 }

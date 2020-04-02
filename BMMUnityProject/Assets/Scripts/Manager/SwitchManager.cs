@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
+//切换管理
 public class SwitchManager : BaseManager
 {
     public SwitchManager(Facade facade) : base(facade)
     {
 
     }
-    
-    
-    
+
 
     public UserType userType;
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 
+//UI管理
 public class UIManager : BaseManager
 {
     private Dictionary<UIPanelType, string> panelPathDict; //存储所有面板Prefab的路径

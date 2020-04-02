@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//用户管理
 public class UserManager : BaseManager
 {
     private User user;
