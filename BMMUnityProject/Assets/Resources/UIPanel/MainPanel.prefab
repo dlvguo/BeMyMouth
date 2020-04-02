@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4625375533720513893}
   - component: {fileID: 1080808796831390998}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Bar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,7 +255,7 @@ RectTransform:
   m_Children:
   - {fileID: 6778632672608074676}
   m_Father: {fileID: 6008131217504485239}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 5289084414943554335}
   - component: {fileID: 6823877789658636848}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: DefineGesture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1032,7 +1032,7 @@ GameObject:
   - component: {fileID: 8186356853357026989}
   - component: {fileID: 3031018952207049713}
   m_Layer: 5
-  m_Name: bg
+  m_Name: BdGrey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1054,8 +1054,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -899, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -893, y: 0}
+  m_SizeDelta: {x: -82, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8186356853357026989
 CanvasRenderer:
@@ -1176,7 +1176,7 @@ GameObject:
   - component: {fileID: 7010498402149497783}
   - component: {fileID: 5540054838570897752}
   m_Layer: 5
-  m_Name: bg2
+  m_Name: BgHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1579,7 +1579,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9884\u7559"
+  m_Text: "\u81EA\u5B9A\u4E49\u624B\u52BF"
 --- !u!1 &4984418819430693730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,7 +1966,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000083811665}
+  m_AnchoredPosition: {x: 0, y: -0.000043026816}
   m_SizeDelta: {x: 0, y: 65}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8500228254050231940
@@ -2093,7 +2093,7 @@ GameObject:
   - component: {fileID: 7249459758357880740}
   - component: {fileID: 2123787868551392115}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Bar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2301,7 +2301,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9884\u7559"
+  m_Text: "\u624B\u8BED\u5B66\u4E60"
 --- !u!1 &6914440781224566314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,7 +2687,6 @@ RectTransform:
   - {fileID: 454067635328553382}
   - {fileID: 4347897532881189715}
   - {fileID: 320735479383373564}
-  - {fileID: 1105919987838120903}
   - {fileID: 5221150568572516025}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2763,41 +2762,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97fb57060c505794e85e2f49cd1c8287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8162859350827770039
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1105919987838120903}
-  m_Layer: 5
-  m_Name: GameObject (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1105919987838120903
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8162859350827770039}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6008131217504485239}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 126.25, y: 0}
-  m_SizeDelta: {x: 1138.5, y: 904}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8305757702836859016
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,7 +2847,7 @@ GameObject:
   - component: {fileID: 8544308682807136762}
   - component: {fileID: 4819844443007931979}
   m_Layer: 5
-  m_Name: GameObject (1)
+  m_Name: GestureStudy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
