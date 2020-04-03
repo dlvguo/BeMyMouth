@@ -42,6 +42,7 @@ public class Facade : MonoBehaviour
         DestroyManager();
     }
 
+    //初始化面板
     private void InitManager()
     {
         uiMng = new UIManager(this);
@@ -121,6 +122,7 @@ public class Facade : MonoBehaviour
         return userMng.GetUserID();
     }
 
+    //获取用户名
     public string GetNickname()
     {
         return userMng.GetNickname();
