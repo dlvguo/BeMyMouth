@@ -24,7 +24,7 @@ public class LoginPanel : BasePanel
         }
     }
 
-    public override void InjectPanelThings()
+    public override void InitPanelThings()
     {
 //        transform.Find("BackButton").GetComponent<Button>().onClick.AddListener(OnBackButtonClick);
         transform.Find("LoginButton").GetComponent<Button>().onClick.AddListener(OnLoginButtonClick);
@@ -36,7 +36,7 @@ public class LoginPanel : BasePanel
 
         loginRequest = GetComponent<LoginRequest>();
 
-        base.InjectPanelThings();
+        base.InitPanelThings();
     }
 
 

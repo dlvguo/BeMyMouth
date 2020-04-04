@@ -215,7 +215,7 @@ public class UIManager : BaseManager
         instPanel.transform.SetParent(CanvasTransform, false);
         instPanel.GetComponent<BasePanel>().UIMng = this;
         instPanel.GetComponent<BasePanel>().Facade = facade;
-        instPanel.GetComponent<BasePanel>().InjectPanelThings();
+        instPanel.GetComponent<BasePanel>().InitPanelThings();
         panelDict.Add(panelType, instPanel.GetComponent<BasePanel>());
         return instPanel.GetComponent<BasePanel>();
     }

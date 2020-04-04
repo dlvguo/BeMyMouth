@@ -43,7 +43,7 @@ public class BasePanel : MonoBehaviour
     /// <summary>
     /// 初始化面板
     /// </summary>
-    public virtual void InjectPanelThings()
+    public virtual void InitPanelThings()
     {
         try
         {

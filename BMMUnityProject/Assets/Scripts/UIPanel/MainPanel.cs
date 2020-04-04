@@ -69,7 +69,7 @@ public class MainPanel : BasePanel
         }
     }
 
-    public override void InjectPanelThings()
+    public override void InitPanelThings()
     {
         name = transform.Find("puser/name").GetComponent<Text>();
         name.text = facade.GetNickname();

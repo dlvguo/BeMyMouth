@@ -118,7 +118,7 @@ public class ChatPanel : BasePanel
     {
     }
 
-    public override void InjectPanelThings()
+    public override void InitPanelThings()
     {
         transform.Find("frName/back").GetComponent<Button>().onClick.AddListener(() => { uiMng.PopPanel(); });
 
@@ -129,7 +129,7 @@ public class ChatPanel : BasePanel
         transform.Find("ms/sendBtn").GetComponent<Button>().onClick.AddListener(OnSendButtonClick);
         scmRequest = GetComponent<SendToSaveChatMessageRequest>();
         keyboardSelector = GetComponent<KeyboardSelector>();
-        base.InjectPanelThings();
+        base.InitPanelThings();
     }
 
     public void SetFrName(string name)

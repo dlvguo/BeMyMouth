@@ -8,7 +8,7 @@ public class SearchUserPanel : BasePanel
  private Button serachButton;
 
 
- public override void InjectPanelThings()
+ public override void InitPanelThings()
  {
   transform.Find("serachButton").GetComponent<Button>().onClick.AddListener(OnSerachButtonClick);
  }

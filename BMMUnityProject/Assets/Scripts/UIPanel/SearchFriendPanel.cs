@@ -18,7 +18,7 @@ public class SearchFriendPanel : BasePanel
     private List<BaseItem> sfItems = new List<BaseItem>();
 
 
-    public override void InjectPanelThings()
+    public override void InitPanelThings()
     {
         searchFriendRequest = GetComponent<SearchFriendRequest>();
         iF.onValueChanged.AddListener(value =>
@@ -40,7 +40,7 @@ public class SearchFriendPanel : BasePanel
         );
         backButton = transform.Find("backButton").GetComponent<Button>();
         backButton.onClick.AddListener(() => { uiMng.PopPanel(); });
-        base.InjectPanelThings();
+        base.InitPanelThings();
     }
 
     public override void OnExit()

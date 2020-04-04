@@ -27,7 +27,7 @@ public class RegPanel : BasePanel
     private int guardCode;
 
 
-    public override void InjectPanelThings()
+    public override void InitPanelThings()
     {
         transform.Find("sendCodeBtn").GetComponent<Button>().onClick.AddListener(OnSendCodeBtnCLick);
         transform.Find("regBtn").GetComponent<Button>().onClick.AddListener(OnRegBtnClick);
@@ -42,7 +42,7 @@ public class RegPanel : BasePanel
         mail = GetComponent<Mail>();
         registerRequest = GetComponent<RegisterRequest>();
         verifyRepeatRequest = GetComponent<VerifyRepeatRequest>();
-        base.InjectPanelThings();
+        base.InitPanelThings();
     }
 
     private void Update()

@@ -9,7 +9,7 @@ public class PreMenuPanel : BasePanel
     private InputField nicknameIF;
     private SetFirstLoginInformationRequest setFirstLoginInformationRequest;
 
-    public override void InjectPanelThings()
+    public override void InitPanelThings()
     {
         nicknameIF = transform.Find("nicknameIF").GetComponent<InputField>();
         transform.Find("confirmButton").GetComponent<Button>().onClick.AddListener(OnConfirmButtonClick);
