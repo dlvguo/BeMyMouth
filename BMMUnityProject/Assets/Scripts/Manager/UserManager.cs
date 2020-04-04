@@ -69,7 +69,7 @@ public class UserManager : BaseManager
     /// 设置用户昵称
     /// </summary>
     /// <param name="nickname"></param>
-    public void Setlogined(string nickname)
+    public void SetNickName(string nickname)
     {
         user.IsLoginFirst = false;
         user.Nickname = nickname;

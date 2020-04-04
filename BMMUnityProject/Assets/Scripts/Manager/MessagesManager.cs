@@ -19,11 +19,21 @@ public class MessagesManager : BaseManager
         ProcessMessage(id, m);
     }
 
+    /// <summary>
+    /// 获取消息
+    /// </summary>
+    /// <param name="id">用户ID</param>
+    /// <returns></returns>
     public List<string> GetMessage(int id)
     {
         return messagesRdic.GetAllValue(id);
     }
 
+    /// <summary>
+    /// 处理消息
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="m"></param>
     private void ProcessMessage(int id, string m)
     {
         if (facade.NowChatID() == id)
@@ -36,11 +46,19 @@ public class MessagesManager : BaseManager
         }
     }
 
+    /// <summary>
+    /// 展示消息
+    /// </summary>
+    /// <param name="message"></param>
     private void ShowMessage(string message)
     {
         facade.SyncInsFrChatItem(message);
     }
 
+    /// <summary>
+    /// 展示通知
+    /// </summary>
+    /// <param name="id"></param>
     private void ShowNotification(int id)
     {
         facade.SyncShowNotification(id);

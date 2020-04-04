@@ -21,7 +21,10 @@ public class GetFriendListRequest : BaseRequest
         base.SendRequest(id.ToString());
     }
 
-
+    /// <summary>
+    /// 朋友列表更新相关
+    /// </summary>
+    /// <param name="data"></param>
     public override void OnResPonse(string data)
     {
         _facade.ClearFriendInformation();
@@ -33,11 +36,10 @@ public class GetFriendListRequest : BaseRequest
             {
                 string[] frs = s.Split(',');
                 Friend friend = new Friend(int.Parse(frs[0]), frs[1]);
-//                bool isOnLine = bool.Parse(frs[2]);
-                //TODO 好友在线状态
+                //                bool isOnLine = bool.Parse(frs[2]);
+                //TODO 好友在线状态 后续考虑加 在User里面添加一个是否登录反馈即可
                 _facade.AddFriendInformation(friend);
             }
-
             mainPanel.OnGetFriendListResponse();
         }
         else

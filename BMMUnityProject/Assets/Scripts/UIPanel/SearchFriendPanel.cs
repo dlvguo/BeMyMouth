@@ -28,14 +28,14 @@ public class SearchFriendPanel : BasePanel
         });
         iF.onValueChanged.AddListener((x) =>
             {
-           
+
                 for (int i = 0; i < sfItems.Count; i++)
                 {
-                      sfItems[i].DestroyMe();
-                
+                    sfItems[i].DestroyMe();
+
                 }
-             sfItems.Clear();
-              
+                sfItems.Clear();
+
             }
         );
         backButton = transform.Find("backButton").GetComponent<Button>();
@@ -54,6 +54,10 @@ public class SearchFriendPanel : BasePanel
         base.OnEnter();
     }
 
+    /// <summary>
+    /// 添加朋友
+    /// </summary>
+    /// <param name="data"></param>
     public void OnSearchFriendReseponse(string data)
     {
         if (data == "r")
@@ -78,13 +82,13 @@ public class SearchFriendPanel : BasePanel
 
     private void Update()
     {
-//        if (names.Count == 0&&isNotTimeTODM)
-//        {
-//            foreach (var VARIABLE in sfItems)
-//            {
-//                VARIABLE.DestroyMe();
-//            }
-//        }
+        //        if (names.Count == 0&&isNotTimeTODM)
+        //        {
+        //            foreach (var VARIABLE in sfItems)
+        //            {
+        //                VARIABLE.DestroyMe();
+        //            }
+        //        }
 
         {
             for (int i = 1; i < names.Count; i++)
@@ -97,28 +101,34 @@ public class SearchFriendPanel : BasePanel
         }
     }
 
-//    private void Update()
-//    {
-//        if (isTimeToSyncInsSFItem)
-//        {BroadcastMessage("DestoryMe");
-//            foreach (var VARIABLE in userNames)
-//            {
-//                InsSFItem(VARIABLE,nickName);
-//            }
-//            isTimeToSyncInsSFItem = false;
-//        }
-//    }
-//
-//    private bool isTimeToSyncInsSFItem = false;
-//    private List<string> userNames = new List<string>();
-//    private string nickName;
-//
+    //    private void Update()
+    //    {
+    //        if (isTimeToSyncInsSFItem)
+    //        {BroadcastMessage("DestoryMe");
+    //            foreach (var VARIABLE in userNames)
+    //            {
+    //                InsSFItem(VARIABLE,nickName);
+    //            }
+    //            isTimeToSyncInsSFItem = false;
+    //        }
+    //    }
+    //
+    //    private bool isTimeToSyncInsSFItem = false;
+    //    private List<string> userNames = new List<string>();
+    //    private string nickName;
+    //
+
+    /// <summary>
+    /// 刷新朋友列表
+    /// </summary>
+    /// <param name="username"></param>
+    /// <param name="nickName"></param>
     public void InsSerarchFriendItem(string username, string nickName)
     {
         GameObject g = Instantiate(sFItem);
         g.transform.SetParent(content);
         content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 101f);
-        g.GetComponent<SearchFriendItem>().Structure(username, nickName,uiMng,facade);
+        g.GetComponent<SearchFriendItem>().Structure(username, nickName, uiMng, facade);
         sfItems.Add(g.GetComponent<SearchFriendItem>());
     }
 }
