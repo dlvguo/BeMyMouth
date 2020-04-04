@@ -69,6 +69,7 @@ public class MainPanel : BasePanel
         }
     }
 
+    //初始化面板
     public override void InitPanelThings()
     {
         name = transform.Find("puser/name").GetComponent<Text>();
@@ -77,7 +78,8 @@ public class MainPanel : BasePanel
         msgButton = transform.Find("msgButton").GetComponent<Button>();
         msgButton.onClick.AddListener(() => { uiMng.PushPanel(UIPanelType.ChatPanel); });
         sfButton.onClick.AddListener(() => { uiMng.PushPanel(UIPanelType.SearchFriendPanel); });
-        transform.Find("quitButton").GetComponent<Button>().onClick.AddListener(() => {
+        transform.Find("quitButton").GetComponent<Button>().onClick.AddListener(() =>
+        {
             if (uiMng.panelStack.Count == 3)
             {
                 uiMng.PopPanel();
@@ -149,6 +151,8 @@ public class MainPanel : BasePanel
     public void UpdateLineDot()
     {
     }
+
+    //初始化朋友Item
     public void InstantiateFriendItem()
     {
         if (friendItems.Count > 0)
@@ -179,23 +183,23 @@ public class MainPanel : BasePanel
 
     public override void OnEnter()
     {
-//        Invoke("iii", 1f);
+        //        Invoke("iii", 1f);
         getFriendListRequest.SendRequest(facade.GetUserID());
         base.OnEnter();
         gameObject.SetActive(true);
 
-//        msgButton.onClick.Invoke();
+        //        msgButton.onClick.Invoke();
     }
 
 
     public override void OnResume()
     {
-//        gameObject.SetActive(true);
+        //        gameObject.SetActive(true);
     }
 
     public override void OnPause()
     {
-//        gameObject.SetActive(false);
+        //        gameObject.SetActive(false);
     }
 
     public override void OnExit()

@@ -16,12 +16,12 @@ public class LoginRequest : BaseRequest
         base.Awake();
     }
 
-//    private void Start()
-//    {
-//        controllerCode = ControllerCode.User;
-//        requestCode = RequestCode.Login;
-//        loginPanel = GetComponent<LoginPanel>();
-//    }
+    //    private void Start()
+    //    {
+    //        controllerCode = ControllerCode.User;
+    //        requestCode = RequestCode.Login;
+    //        loginPanel = GetComponent<LoginPanel>();
+    //    }
 
 
     public void SendRequest(string username, string password)
@@ -30,6 +30,7 @@ public class LoginRequest : BaseRequest
         base.SendRequest(data);
     }
 
+    //获取回应
     public override void OnResPonse(string data)
     {
         ReturnCode returnCode;
@@ -42,7 +43,7 @@ public class LoginRequest : BaseRequest
             nickname = strs[2];
             bool ifl = Boolean.Parse(strs[3]);
             _facade.SetUserInformation(id, username, nickname, ifl);
-            returnCode = (ReturnCode) int.Parse(strs[4]);
+            returnCode = (ReturnCode)int.Parse(strs[4]);
         }
         else
         {

@@ -128,6 +128,7 @@ public class Facade : MonoBehaviour
         return userMng.GetNickname();
     }
 
+    //添加朋友
     public void AddFriendInformation(Friend fr)
     {
         userMng.AddFriendInformation(fr);
