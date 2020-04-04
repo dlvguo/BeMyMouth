@@ -186,18 +186,20 @@ namespace BMMServer.DBS
                     {
                         if (friend.LeftId == id)
                         {
-                            sb.Append(friend.RightId + ',');
+                            sb.Append(friend.RightId.ToString());
+                            sb.Append(',');
 
                         }
                     }
-                    foreach (var friend in db.Friends)
-                    {
-                        if (friend.RightId == id)
-                        {
-                            sb.Append(friend.LeftId + ',');
+                    //foreach (var friend in db.Friends)
+                    //{
+                    //    if (friend.RightId == id)
+                    //    {
+                    //        sb.Append(friend.LeftId.ToString());
+                    //        sb.Append(',');
 
-                        }
-                    }
+                    //    }
+                    //}
                 }
 
                 if (sb.Length > 0)

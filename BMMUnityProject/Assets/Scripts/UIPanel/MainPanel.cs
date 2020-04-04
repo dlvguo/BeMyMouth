@@ -24,6 +24,10 @@ public class MainPanel : BasePanel
 
     [SerializeField] private GameObject aPItem;
 
+    /// <summary>
+    /// 添加注意
+    /// </summary>
+    /// <param name="data"></param>
     public void AddNotificationsIdAndShow(string data)
     {
         string[] strs = data.Split(',');
@@ -92,17 +96,27 @@ public class MainPanel : BasePanel
         });
     }
 
-
+    /// <summary>
+    /// 刷新朋友面板的时候
+    /// </summary>
     public void OnGetFriendListResponse()
     {
         isTimeToInsFrItem = true;
     }
 
+    /// <summary>
+    /// 提示回去
+    /// </summary>
+    /// <param name="data"></param>
     public void OnGetNotificationReponse(string data)
     {
         AddNotificationsIdAndShow(data);
     }
 
+    /// <summary>
+    /// 获取提醒
+    /// </summary>
+    /// <param name="data"></param>
     public void OnSendApplyNoticeResponse(string data)
     {
         string[] strs = data.Split(',');
@@ -110,8 +124,8 @@ public class MainPanel : BasePanel
         syncId = strs[1];
     }
 
-    private string syncNickName = null;
-    private string syncId = null;
+    private string syncNickName = string.Empty;
+    private string syncId = string.Empty;
 
     private void InsAPItem(string nickName, string id)
     {
