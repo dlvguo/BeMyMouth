@@ -5,7 +5,8 @@ using System.Collections.Generic;
 /// <summary>
 /// 对Dictory的扩展
 /// </summary>
-public static class DictionaryExtension  {
+public static class DictionaryExtension
+{
 
     /// <summary>
     /// 尝试根据key得到value，得到了的话直接返回value，没有得到直接返回null
@@ -17,5 +18,5 @@ public static class DictionaryExtension  {
         dict.TryGetValue(key, out value);
         return value;
     }
-    
+
 }

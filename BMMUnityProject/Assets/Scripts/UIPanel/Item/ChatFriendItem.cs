@@ -12,7 +12,7 @@ public class ChatFriendItem : BaseItem
     public Button voiceButton;
     public Button handButton;
     private Button backButton;
- 
+
     private void Start()
     {
         cPanel = GetComponentInParent<ChatPanel>();

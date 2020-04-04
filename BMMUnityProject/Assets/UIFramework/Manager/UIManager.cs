@@ -97,7 +97,7 @@ public class UIManager : BaseManager
         BasePanel panel = GetPanel(panelType);
         panel.OnEnter();
         panelStack.Push(panel);
-//        Debug.Log(panel.name + "pushed");
+        //        Debug.Log(panel.name + "pushed");
     }
 
     public override void Update()
@@ -135,7 +135,7 @@ public class UIManager : BaseManager
         }
 
 
-//        DictDisp();
+        //        DictDisp();
     }
 
     public void PushPanelsSync(List<UIPanelType> panelTypes)
@@ -232,7 +232,7 @@ public class UIManager : BaseManager
         BasePanel panel = panelDict.TryGet(panelType);
         if (panel == null)
         {
-//            Debug.Log(panelType.ToString());
+            //            Debug.Log(panelType.ToString());
             //如果找不到，那么就找这个面板的prefab的路径，然后去根据prefab去实例化面板
             //string path;
             //panelPathDict.TryGetValue(panelType, out path);
