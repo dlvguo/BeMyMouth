@@ -11,27 +11,34 @@ public class FriendItem : BaseItem
     public int Id { get; set; }
     public string nickname { get; set; }
 
-
+    /// <summary>
+    /// 显示通知
+    /// </summary>
     public void ShowNotification()
     {
         notificationDot.enabled = true;
     }
+
+    /// <summary>
+    /// 关闭通知
+    /// </summary>
     public void CloseNotifaction()
     {
         notificationDot.enabled = false;
     }
 
+    /// <summary>
+    /// 展示信息
+    /// </summary>
     public void ShowInformation()
     {
         nicknameText.text = nickname;
         GetComponent<Button>().onClick.AddListener(OnButtonClick);
     }
 
-    public void SetLineDot()
-    {
-//TODO maybe
-    }
-
+    /// <summary>
+    /// 朋友点击跳到聊天窗口
+    /// </summary>
     private void OnButtonClick()
     {
         uiMng.PushPanel(UIPanelType.ChatPanel);

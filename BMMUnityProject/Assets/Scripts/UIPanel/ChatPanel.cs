@@ -22,7 +22,7 @@ public class ChatPanel : BasePanel
     public ChangeTypeButton ctButton;
 
     public GameObject LeapController;
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN  //手语需要
     public GameObject qingKong;
     public GameObject allSend;
 
@@ -219,7 +219,7 @@ public class ChatPanel : BasePanel
             fitem.ChangeButton(ut);
         }
     }
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN //TODO 估计是手语版本聊天窗口
     public void OnHandClick()
     {
         message.SetActive(true);
