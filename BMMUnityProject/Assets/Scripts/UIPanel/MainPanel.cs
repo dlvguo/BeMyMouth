@@ -186,6 +186,7 @@ public class MainPanel : BasePanel
         {
             GameObject g = Instantiate(frItem);
             g.transform.SetParent(parent.transform);
+            g.transform.localScale = new Vector3(1f, 1f, 1f);
 #if UNITY_ANDROID||UNITY_STANDALONE_WIN||UNITY_EDITOR
             content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 150);
 #endif
