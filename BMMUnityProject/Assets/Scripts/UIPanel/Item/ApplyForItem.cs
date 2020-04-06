@@ -9,7 +9,7 @@ public class ApplyForItem : BaseItem
     [SerializeField] private Text nicknameText;
     [SerializeField] private Button applyButton;
     [SerializeField] private Button refusedButton;
-  //  [SerializeField] private Animator ani;
+    //  [SerializeField] private Animator ani;
     [SerializeField] private AddFriendRequest addFriendRequest;
 
     private int id;
@@ -21,16 +21,17 @@ public class ApplyForItem : BaseItem
         this.uiMng = uiMng;
         addFriendRequest = uiMng.GetPanel(UIPanelType.MainPanel).GetComponent<AddFriendRequest>();
         nicknameText.text = nickName;
+        //点击后发送添加好友请求
         applyButton.onClick.AddListener(() =>
         {
             this.id = int.Parse(id);
             this.nickName = nickName;
             addFriendRequest.SendRequest(id + ',' + facade.GetUserID());
-            DestroyMe();
+            Destroy();
         });
         refusedButton.onClick.AddListener(() =>
         {
-            DestroyMe();
+            Destroy();
         });
     }
 }

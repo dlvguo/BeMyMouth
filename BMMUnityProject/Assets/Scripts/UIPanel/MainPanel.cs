@@ -10,7 +10,10 @@ public class MainPanel : BasePanel
     private GetFriendListRequest getFriendListRequest;
 
     [SerializeField] private VerticalLayoutGroup parent;
+    //朋友表格
     [SerializeField] private GameObject frItem;
+    //申请表格
+    [SerializeField] private GameObject aPItem;
     [SerializeField] private RectTransform content;
 
     private bool isTimeToInsFrItem;
@@ -22,10 +25,9 @@ public class MainPanel : BasePanel
     private List<FriendItem> friendItems = new List<FriendItem>();
     private List<int> notificationsIds = new List<int>();
 
-    [SerializeField] private GameObject aPItem;
 
     /// <summary>
-    /// 添加注意
+    /// 添加消息
     /// </summary>
     /// <param name="data"></param>
     public void AddNotificationsIdAndShow(string data)
@@ -105,7 +107,7 @@ public class MainPanel : BasePanel
     }
 
     /// <summary>
-    /// 提示回去
+    /// 提示消息
     /// </summary>
     /// <param name="data"></param>
     public void OnGetNotificationReponse(string data)
@@ -114,7 +116,7 @@ public class MainPanel : BasePanel
     }
 
     /// <summary>
-    /// 获取提醒
+    /// 获取消息提醒
     /// </summary>
     /// <param name="data"></param>
     public void OnSendApplyNoticeResponse(string data)
@@ -127,6 +129,11 @@ public class MainPanel : BasePanel
     private string syncNickName = string.Empty;
     private string syncId = string.Empty;
 
+    /// <summary>
+    /// 刷新请求
+    /// </summary>
+    /// <param name="nickName"></param>
+    /// <param name="id"></param>
     private void InsAPItem(string nickName, string id)
     {
         GameObject g = Instantiate(aPItem);
@@ -155,11 +162,11 @@ public class MainPanel : BasePanel
             SyncShowNotificationId = -1;
         }
 
-        if (syncNickName != null || syncId != null)
+        if (syncNickName != string.Empty || syncId != string.Empty)
         {
             InsAPItem(syncNickName, syncId);
-            syncNickName = null;
-            syncId = null;
+            syncNickName = string.Empty;
+            syncId = string.Empty;
         }
     }
     public void UpdateLineDot()

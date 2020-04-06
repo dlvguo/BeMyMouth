@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Common;
 using UnityEngine;
 
+/// <summary>
+/// 获取申请好友回应
+/// </summary>
 public class SendApplyNoticeResponse : BaseRequest
 {
     private MainPanel mainPanel;

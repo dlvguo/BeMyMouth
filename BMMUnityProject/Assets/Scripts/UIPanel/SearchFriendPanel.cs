@@ -31,7 +31,7 @@ public class SearchFriendPanel : BasePanel
 
                 for (int i = 0; i < sfItems.Count; i++)
                 {
-                    sfItems[i].DestroyMe();
+                    sfItems[i].Destroy();
 
                 }
                 sfItems.Clear();
