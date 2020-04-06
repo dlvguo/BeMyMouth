@@ -61,10 +61,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 485460daa6f8ca5439022c8ccfd9ab95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 4648663102380729641}
   frItem: {fileID: 784904080220141429, guid: cba745d196d0d714997c4433d538c358, type: 3}
   selfItem: {fileID: 784904080220141429, guid: 8c0686bb56aa07442a35806a110d874d, type: 3}
   content: {fileID: 2068104972969385235}
+  chatScrollBar: {fileID: 7205065450732884766}
+  parent: {fileID: 4648663102380729641}
   ctButton: {fileID: 0}
   LeapController: {fileID: 8457168241696841453, guid: 2ee4c3f62e6d2ca4b9af87ca841aa7b0,
     type: 3}
@@ -1467,7 +1468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "\u8BF7\u8F93\u5165\u5185\u5BB9..."
 --- !u!1 &4830526982527508370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,8 +2381,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.9577252, g: 0.9622642, b: 0.9597516, a: 1}
+    m_HighlightedColor: {r: 0.7896493, g: 0.990566, b: 0.92438936, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2562,7 +2563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8584906, g: 0.8544411, b: 0.8544411, a: 1}
+  m_Color: {r: 0.6740388, g: 0.84457093, b: 0.9339623, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

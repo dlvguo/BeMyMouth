@@ -7,27 +7,41 @@ using UnityEngine.UI;
 
 public class ChatPanel : BasePanel
 {
+    //当前聊天用户ID
     public int NowChatId { get; set; }
+    //聊天用户名称
     private Text frName;
+    //消息输入框
     private InputField msIF;
+    //发送消息
     private SendToSaveChatMessageRequest scmRequest;
     private KeyboardSelector keyboardSelector;
     private List<ChatSelfItem> chatSelfItems = new List<ChatSelfItem>();
     private List<ChatFriendItem> chatFrItems = new List<ChatFriendItem>();
 
-    public VerticalLayoutGroup parent;
+    //用于实例话朋友消息
     public GameObject frItem;
+    //用于实例话自己消息
     public GameObject selfItem;
+    //应该是滑动条布局
     public RectTransform content;
+    //消息滑动条
+    public Scrollbar chatScrollBar;
+
+    //滑动条
+    public VerticalLayoutGroup parent;
+    //更改类型
     public ChangeTypeButton ctButton;
 
     public GameObject LeapController;
 #if UNITY_STANDALONE_WIN  //手语需要
+
     public GameObject qingKong;
     public GameObject allSend;
 
     public GameObject message;
 #endif
+
     private Transform Camera;
     private Canvas canvas;
 
@@ -47,6 +61,7 @@ public class ChatPanel : BasePanel
         qingKong.SetActive(false);
         allSend.SetActive(false);
         message.SetActive(false);
+        //chatScrollBar.onValueChanged.AddListener((v) => chatScrollBar.value = 0);
 #endif
 #endif
         //        msIF.onValueChanged.AddListener((data) =>
@@ -141,7 +156,7 @@ public class ChatPanel : BasePanel
     {
         if (string.IsNullOrEmpty(msIF.text) || NowChatId == 0)
         {
-            uiMng.ShowPanelMessage(UIPanelType.ChatPanel, "。。。");
+            uiMng.ShowPanelMessage(UIPanelType.ChatPanel, "对方不在线,这是哥在测试");//TODO 应该是测试用的
             return;
         }
 
@@ -195,16 +210,20 @@ public class ChatPanel : BasePanel
         content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 170);
         g.GetComponent<ChatFriendItem>().Structure(message, uiMng, facade, facade.GetType());
         chatFrItems.Add(g.GetComponent<ChatFriendItem>());
+        InsSrollBar();
+
     }
 
     public void InsSelfChatItem(string message)
     {
         GameObject g = Instantiate(selfItem);
         g.transform.SetParent(parent.transform);
+        g.transform.localScale = new Vector3(1f, 1f, 1f);
         content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 170);
 
         g.GetComponent<ChatSelfItem>().Structure(message, uiMng, facade, facade.GetType());
         chatSelfItems.Add(g.GetComponent<ChatSelfItem>());
+        InsSrollBar();
     }
 
     public void ChangeButton(SwitchManager.UserType ut)
@@ -218,6 +237,14 @@ public class ChatPanel : BasePanel
         {
             fitem.ChangeButton(ut);
         }
+    }
+
+    /// <summary>
+    /// 刷新下SrollBar
+    /// </summary>
+    private void InsSrollBar()
+    {
+        chatScrollBar.value = 0;//TODO 滑动条问题要更新
     }
 #if UNITY_STANDALONE_WIN //TODO 估计是手语版本聊天窗口
     public void OnHandClick()
