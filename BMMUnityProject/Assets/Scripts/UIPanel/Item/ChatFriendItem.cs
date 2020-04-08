@@ -63,6 +63,7 @@ public class ChatFriendItem : BaseItem
         Message = message;
         iF.text = Message;
         Invoke("ButtonAdptation", 0.03f);
+        
     }
 
     public void OnButtonClick()

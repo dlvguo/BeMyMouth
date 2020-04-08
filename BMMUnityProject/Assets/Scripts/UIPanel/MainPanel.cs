@@ -178,7 +178,7 @@ public class MainPanel : BasePanel
     {
         if (friendItems.Count > 0)
         {
-            content.BroadcastMessage("DestroyMe");
+            content.BroadcastMessage("Destroy");
             friendItems.Clear();
         }
 

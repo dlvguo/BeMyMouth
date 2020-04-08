@@ -42,7 +42,7 @@ public class ChatPanel : BasePanel
     public GameObject message;
 #endif
 
-    private Transform Camera;
+    private Transform camera;
     private Canvas canvas;
 
     public GameObject LeapMotionController;
@@ -52,17 +52,17 @@ public class ChatPanel : BasePanel
 
     private void Awake()
     {
-        Camera = GameObject.Find("Main Camera").transform;
+
+        camera = GameObject.Find("Main Camera").transform;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-#if DEBUG
-#if UNITY_STANDALONE_WIN
+        //chatScrollBar.onValueChanged.AddListener((v) => StartCoroutine("InsSrollBar"));
+
+#if UNITY_STANDALONE_WIN||DEBUG
         kuSelf = GameObject.FindWithTag("kuSelf").GetComponent<Text>();
         kuSystem = GameObject.FindWithTag("kuSystem").GetComponent<Text>();
         qingKong.SetActive(false);
         allSend.SetActive(false);
         message.SetActive(false);
-        //chatScrollBar.onValueChanged.AddListener((v) => chatScrollBar.value = 0);
-#endif
 #endif
         //        msIF.onValueChanged.AddListener((data) =>
         //        {
@@ -126,12 +126,9 @@ public class ChatPanel : BasePanel
     {
         if (chatSelfItems.Count == 0 || chatFrItems.Count == 0)
             return;
-        BroadcastMessage("DestroyMe");
+        BroadcastMessage("Destroy");//TODO
     }
 
-    public void DestoryMe()
-    {
-    }
 
     public override void InitPanelThings()
     {
@@ -207,6 +204,7 @@ public class ChatPanel : BasePanel
     {
         GameObject g = Instantiate(frItem);
         g.transform.SetParent(parent.transform);
+        g.transform.localScale = new Vector3(1f, 1f, 1f);
         content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 170);
         g.GetComponent<ChatFriendItem>().Structure(message, uiMng, facade, facade.GetType());
         chatFrItems.Add(g.GetComponent<ChatFriendItem>());
@@ -246,7 +244,7 @@ public class ChatPanel : BasePanel
     {
         yield return new WaitForEndOfFrame();
 
-        chatScrollBar.value = 0;//TODO 滑动条问题要更新
+        chatScrollBar.value = 0;//TODO 滑动条问题要更新 contentSize有问题需要改改
     }
 #if UNITY_STANDALONE_WIN //TODO 估计是手语版本聊天窗口
     public void OnHandClick()
@@ -259,7 +257,7 @@ public class ChatPanel : BasePanel
         allSend.SetActive(true);
         LeapMotionController = Instantiate(LeapController);
         Transform tran = LeapMotionController.transform;
-        LeapMotionController.transform.SetParent(Camera);
+        LeapMotionController.transform.SetParent(camera);
         LeapMotionController.transform.localPosition = tran.position;
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         kuSelf.text = "使用自制手势库";
@@ -272,7 +270,7 @@ public class ChatPanel : BasePanel
         allSend.SetActive(true);
         LeapMotionController = Instantiate(LeapController);
         Transform tran = LeapMotionController.transform;
-        LeapMotionController.transform.SetParent(Camera);
+        LeapMotionController.transform.SetParent(camera);
         LeapMotionController.transform.localPosition = tran.position;
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
     }
