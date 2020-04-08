@@ -210,7 +210,7 @@ public class ChatPanel : BasePanel
         content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 170);
         g.GetComponent<ChatFriendItem>().Structure(message, uiMng, facade, facade.GetType());
         chatFrItems.Add(g.GetComponent<ChatFriendItem>());
-        InsSrollBar();
+        StartCoroutine("InsSrollBar");
 
     }
 
@@ -223,7 +223,7 @@ public class ChatPanel : BasePanel
 
         g.GetComponent<ChatSelfItem>().Structure(message, uiMng, facade, facade.GetType());
         chatSelfItems.Add(g.GetComponent<ChatSelfItem>());
-        InsSrollBar();
+        StartCoroutine("InsSrollBar");
     }
 
     public void ChangeButton(SwitchManager.UserType ut)
@@ -240,10 +240,12 @@ public class ChatPanel : BasePanel
     }
 
     /// <summary>
-    /// 刷新下SrollBar
+    /// 刷新下SrollBar 用协程是因为物体绘制要等一帧之后才可以
     /// </summary>
-    private void InsSrollBar()
+    IEnumerator InsSrollBar()
     {
+        yield return new WaitForEndOfFrame();
+
         chatScrollBar.value = 0;//TODO 滑动条问题要更新
     }
 #if UNITY_STANDALONE_WIN //TODO 估计是手语版本聊天窗口

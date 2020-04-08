@@ -827,7 +827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5682811319184351527}
   m_Layer: 5
-  m_Name: GameObject (1)
+  m_Name: ChatArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 4350969356708984880}
   - component: {fileID: 8021938401494385280}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CaBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 1120664634235286918}
   - component: {fileID: 3255988328534682509}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
