@@ -69,9 +69,9 @@ public class SearchFriendPanel : BasePanel
         string[] strs1 = data.Split('|');
         string[] strs2 = strs1[0].Split(',');
         names.Add(strs1[1]);
-        foreach (var VARIABLE in strs2)
+        foreach (var name in strs2)
         {
-            names.Add(VARIABLE);
+            names.Add(name);
         }
 
         //TODO
@@ -119,7 +119,7 @@ public class SearchFriendPanel : BasePanel
     //
 
     /// <summary>
-    /// 刷新朋友列表
+    /// 刷新搜索朋友列表
     /// </summary>
     /// <param name="username"></param>
     /// <param name="nickName"></param>

@@ -149,6 +149,13 @@ public class ChatPanel : BasePanel
         frName.text = name;
     }
 
+    //更新下Size
+    public void InitContentSize()
+    {
+        content.sizeDelta = Vector2.zero;
+
+    }
+
     private void OnSendButtonClick()
     {
         if (string.IsNullOrEmpty(msIF.text) || NowChatId == 0)
@@ -211,6 +218,7 @@ public class ChatPanel : BasePanel
         StartCoroutine("InsSrollBar");
     }
 
+    //刷新聊天记录
     public void InsSelfChatItem(string message)
     {
         GameObject g = Instantiate(selfItem);

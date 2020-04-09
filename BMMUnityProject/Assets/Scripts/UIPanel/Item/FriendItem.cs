@@ -46,6 +46,7 @@ public class FriendItem : BaseItem
         chatPanel.NowChatId = Id;
         chatPanel.SetFrName(Nickname);
         chatPanel.DestroyChatItem();
+        chatPanel.InitContentSize();
         CloseNotifaction();
         //TODO 注意修改消息显示 因为只显示朋友发送的消息 考虑改下 历史消息也没有
         List<string> messages = facade.GetMessage(Id);
