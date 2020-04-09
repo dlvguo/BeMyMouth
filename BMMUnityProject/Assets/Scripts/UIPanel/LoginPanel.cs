@@ -77,7 +77,7 @@ public class LoginPanel : BasePanel
                 List<UIPanelType> uiPanelTypes = new List<UIPanelType>();
                 uiPanelTypes.Add(UIPanelType.MainPanel);
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR    //TODO 讲道理是不需要聊天窗口的 方便测试吧 BAGA
-                uiPanelTypes.Add(UIPanelType.ChatPanel);
+                //uiPanelTypes.Add(UIPanelType.ChatPanel);
 #endif
                 uiMng.PushPanelsSync(uiPanelTypes);
             }

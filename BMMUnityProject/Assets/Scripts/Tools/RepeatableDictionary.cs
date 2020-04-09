@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepeatableDictionary<Tkey,Tvalue>
+public class RepeatableDictionary<Tkey, Tvalue>
 {
-    private List<Tkey> keyList=new List<Tkey>();
-    private List<Tvalue> valueList=new List<Tvalue>();
+    private List<Tkey> keyList = new List<Tkey>();
+    private List<Tvalue> valueList = new List<Tvalue>();
 
-    
+
     public void Add(Tkey key, Tvalue value)
     {
         keyList.Add(key);
@@ -15,7 +15,7 @@ public class RepeatableDictionary<Tkey,Tvalue>
     }
     public List<Tvalue> GetAllValue(Tkey key)
     {
-        int index=0;
+        int index = 0;
         List<Tvalue> values = new List<Tvalue>();
         foreach (Tkey k in keyList)
         {
@@ -25,7 +25,7 @@ public class RepeatableDictionary<Tkey,Tvalue>
             }
             index++;
         }
-        return valueList;
+        return values;
     }
     public void Remove(int index)
     {

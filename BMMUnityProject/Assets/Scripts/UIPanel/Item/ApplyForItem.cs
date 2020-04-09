@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+//添加朋友
 public class ApplyForItem : BaseItem
 {
     [SerializeField] private Text nicknameText;
