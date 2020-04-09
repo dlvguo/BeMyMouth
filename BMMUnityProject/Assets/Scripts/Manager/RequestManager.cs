@@ -38,6 +38,6 @@ public class RequestManager : BaseManager
         {
             Debug.LogWarning("无法得到ActionCode[" + requestCode + "]对应的Request类");return;
         }
-        request.OnResPonse(data);
+         request.OnResPonse(data);
     }
 }
