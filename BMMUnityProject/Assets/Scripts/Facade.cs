@@ -205,7 +205,7 @@ public class Facade : MonoBehaviour
     }
 
     /// <summary>
-    /// 获取消息
+    /// 获取消息 有点BUG 就是这个消息只有记录对方的
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>

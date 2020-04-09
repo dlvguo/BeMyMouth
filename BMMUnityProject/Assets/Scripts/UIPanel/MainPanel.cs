@@ -57,11 +57,11 @@ public class MainPanel : BasePanel
         notificationsIds.Clear();
     }
 
-    private int SyncShowNotificationId = -1;
+    private int syncShowNotificationId = -1;
 
     public void SyncShowNotification(int id)
     {
-        SyncShowNotificationId = id;
+        syncShowNotificationId = id;
     }
 
     public void ShowNotification(int id)
@@ -156,10 +156,11 @@ public class MainPanel : BasePanel
             isTimeToShowNotifications = false;
         }
 
-        if (SyncShowNotificationId != -1)
+        //刷新通知 如果有消息同时的话
+        if (syncShowNotificationId != -1)
         {
-            ShowNotification(SyncShowNotificationId);
-            SyncShowNotificationId = -1;
+            ShowNotification(syncShowNotificationId);
+            syncShowNotificationId = -1;
         }
 
         if (syncNickName != string.Empty || syncId != string.Empty)
@@ -194,7 +195,7 @@ public class MainPanel : BasePanel
             content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 65);
 #endif
             FriendItem fi = g.GetComponent<FriendItem>();
-            fi.nickname = fr.Nickname;
+            fi.Nickname = fr.Nickname;
             fi.ShowInformation();
             fi.Id = fr.Id;
             fi.UIMng = uiMng;

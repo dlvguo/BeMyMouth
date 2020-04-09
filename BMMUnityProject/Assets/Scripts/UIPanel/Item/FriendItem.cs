@@ -9,7 +9,7 @@ public class FriendItem : BaseItem
     public Image lineDot;
     public Image notificationDot;
     public int Id { get; set; }
-    public string nickname { get; set; }
+    public string Nickname { get; set; }
 
     /// <summary>
     /// 显示通知
@@ -20,7 +20,7 @@ public class FriendItem : BaseItem
     }
 
     /// <summary>
-    /// 关闭通知
+    /// 关闭消息通知
     /// </summary>
     public void CloseNotifaction()
     {
@@ -32,7 +32,7 @@ public class FriendItem : BaseItem
     /// </summary>
     public void ShowInformation()
     {
-        nicknameText.text = nickname;
+        nicknameText.text = Nickname;
         GetComponent<Button>().onClick.AddListener(OnButtonClick);
     }
 
@@ -44,9 +44,10 @@ public class FriendItem : BaseItem
         uiMng.PushPanel(UIPanelType.ChatPanel);
         ChatPanel chatPanel = uiMng.GetPanel(UIPanelType.ChatPanel) as ChatPanel;
         chatPanel.NowChatId = Id;
-        chatPanel.SetFrName(nickname);
+        chatPanel.SetFrName(Nickname);
         chatPanel.DestroyChatItem();
         CloseNotifaction();
+        //TODO 注意修改消息显示 因为只显示朋友发送的消息 考虑改下 历史消息也没有
         List<string> messages = facade.GetMessage(Id);
         foreach (string s in messages)
         {

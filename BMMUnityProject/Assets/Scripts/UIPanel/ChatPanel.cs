@@ -122,6 +122,7 @@ public class ChatPanel : BasePanel
         }
     }
 
+    //删除聊天消息
     public void DestroyChatItem()
     {
         if (chatSelfItems.Count == 0 || chatFrItems.Count == 0)
