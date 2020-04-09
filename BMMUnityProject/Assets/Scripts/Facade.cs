@@ -9,9 +9,8 @@ using UnityEngine.UI;
 /// </summary>
 public class Facade : MonoBehaviour
 {
+
     private static Facade _instance;
-
-
     private UIManager uiMng;
     private RequestManager requestMng;
     private ClientManager clientMng;
@@ -247,8 +246,8 @@ public class Facade : MonoBehaviour
         swiMng.ChangeType();
     }
 
-    public new SwitchManager.UserType GetType()
+    public SwitchManager.UserType GetUserType()
     {
-        return swiMng.GetType();
+        return swiMng.GetUserType();
     }
 }

@@ -29,7 +29,7 @@ public class SwitchManager : BaseManager
         }
     }
 
-    public UserType GetType()
+    public UserType GetUserType()
     {
         return userType;
     }

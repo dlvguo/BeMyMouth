@@ -17,7 +17,7 @@ public class ChangeTypeButton : BaseItem
 
     private void Start()
     {
-        buttonText.text = cPanel.GetType().ToString();
+        buttonText.text = cPanel.GetUserType().ToString();
         isDestructible = false;
     }
 
@@ -25,7 +25,7 @@ public class ChangeTypeButton : BaseItem
     public void ChangeType()
     {
         cPanel.ChangeType();
-        buttonText.text = cPanel.GetType().ToString();
+        buttonText.text = cPanel.GetUserType().ToString();
     }
 
     public void ChangeButton(SwitchManager.UserType ut)

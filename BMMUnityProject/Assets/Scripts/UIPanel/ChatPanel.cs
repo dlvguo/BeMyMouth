@@ -42,7 +42,7 @@ public class ChatPanel : BasePanel
     public GameObject message;
 #endif
 
-    private Transform camera;
+    private Transform mainCameraTransform;
     private Canvas canvas;
 
     public GameObject LeapMotionController;
@@ -53,7 +53,7 @@ public class ChatPanel : BasePanel
     private void Awake()
     {
 
-        camera = GameObject.Find("Main Camera").transform;
+        mainCameraTransform = GameObject.Find("Main Camera").transform;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         //chatScrollBar.onValueChanged.AddListener((v) => StartCoroutine("InsSrollBar"));
 
@@ -100,14 +100,14 @@ public class ChatPanel : BasePanel
         return facade;
     }
 
-    private List<string> InsChatFrItemDatas = new List<string>();
+    private List<string> insChatFrItemDatas = new List<string>();
     private bool isTimeToInsChatFrItem;
 
     private void Update()
     {
         if (isTimeToInsChatFrItem)
         {
-            foreach (var message in InsChatFrItemDatas)
+            foreach (var message in insChatFrItemDatas)
             {
                 InsFrChatItem(message);
             }
@@ -127,14 +127,13 @@ public class ChatPanel : BasePanel
     {
         if (chatSelfItems.Count == 0 || chatFrItems.Count == 0)
             return;
-        BroadcastMessage("Destroy");//TODO
+        BroadcastMessage("Destroy");//TODO 删除应该是有问题的
     }
 
 
     public override void InitPanelThings()
     {
         transform.Find("frName/back").GetComponent<Button>().onClick.AddListener(() => { uiMng.PopPanel(); });
-
         ctButton = transform.Find("ms/cb").GetComponent<ChangeTypeButton>();
         ctButton.GetComponent<Button>().onClick.AddListener(ChangeType);
         frName = transform.Find("frName/Text").GetComponent<Text>();
@@ -170,7 +169,7 @@ public class ChatPanel : BasePanel
         string[] strs = data.Split(',');
         foreach (var message in strs)
         {
-            InsChatFrItemDatas.Add(message);
+            insChatFrItemDatas.Add(message);
         }
 
         isTimeToInsChatFrItem = true;
@@ -186,14 +185,14 @@ public class ChatPanel : BasePanel
     public void ChangeType()
     {
         facade.ChangeType();
-        ctButton.ChangeButton(facade.GetType());
-        ChangeButton(facade.GetType());
+        ctButton.ChangeButton(facade.GetUserType());
+        ChangeButton(facade.GetUserType());
     }
 
 
-    public SwitchManager.UserType GetType()
+    public SwitchManager.UserType GetUserType()
     {
-        return facade.GetType();
+        return facade.GetUserType();
     }
 
     public void Display()
@@ -207,10 +206,9 @@ public class ChatPanel : BasePanel
         g.transform.SetParent(parent.transform);
         g.transform.localScale = new Vector3(1f, 1f, 1f);
         content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 170);
-        g.GetComponent<ChatFriendItem>().Structure(message, uiMng, facade, facade.GetType());
+        g.GetComponent<ChatFriendItem>().Structure(message, uiMng, facade, facade.GetUserType());
         chatFrItems.Add(g.GetComponent<ChatFriendItem>());
         StartCoroutine("InsSrollBar");
-
     }
 
     public void InsSelfChatItem(string message)
@@ -220,7 +218,7 @@ public class ChatPanel : BasePanel
         g.transform.localScale = new Vector3(1f, 1f, 1f);
         content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 170);
 
-        g.GetComponent<ChatSelfItem>().Structure(message, uiMng, facade, facade.GetType());
+        g.GetComponent<ChatSelfItem>().Structure(message, uiMng, facade, facade.GetUserType());
         chatSelfItems.Add(g.GetComponent<ChatSelfItem>());
         StartCoroutine("InsSrollBar");
     }
@@ -258,7 +256,7 @@ public class ChatPanel : BasePanel
         allSend.SetActive(true);
         LeapMotionController = Instantiate(LeapController);
         Transform tran = LeapMotionController.transform;
-        LeapMotionController.transform.SetParent(camera);
+        LeapMotionController.transform.SetParent(mainCameraTransform);
         LeapMotionController.transform.localPosition = tran.position;
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         kuSelf.text = "使用自制手势库";
@@ -271,7 +269,7 @@ public class ChatPanel : BasePanel
         allSend.SetActive(true);
         LeapMotionController = Instantiate(LeapController);
         Transform tran = LeapMotionController.transform;
-        LeapMotionController.transform.SetParent(camera);
+        LeapMotionController.transform.SetParent(mainCameraTransform);
         LeapMotionController.transform.localPosition = tran.position;
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
     }
