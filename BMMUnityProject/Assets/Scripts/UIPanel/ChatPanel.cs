@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ChatPanel : BasePanel
 {
     //当前聊天用户ID
-    public int NowChatId { get; set; }
+    public int NowChatId { get; set; } = -1;
     //聊天用户名称
     private Text frName;
     //消息输入框
@@ -125,7 +125,7 @@ public class ChatPanel : BasePanel
     //删除聊天消息
     public void DestroyChatItem()
     {
-        if (chatSelfItems.Count == 0 || chatFrItems.Count == 0)
+        if (chatSelfItems.Count == 0 && chatFrItems.Count == 0)
             return;
         BroadcastMessage("Destroy");//TODO 删除应该是有问题的
     }
@@ -133,6 +133,7 @@ public class ChatPanel : BasePanel
 
     public override void InitPanelThings()
     {
+        //添加返回按钮
         transform.Find("frName/back").GetComponent<Button>().onClick.AddListener(() => { uiMng.PopPanel(); });
         ctButton = transform.Find("ms/cb").GetComponent<ChangeTypeButton>();
         ctButton.GetComponent<Button>().onClick.AddListener(ChangeType);
@@ -171,6 +172,7 @@ public class ChatPanel : BasePanel
         GetComponentInChildren<ClearInputFiled>().ResetIF();
     }
 
+    //接收朋友消息
     public void OnReciveChatMessageResponse(string data)
     {
         string[] strs = data.Split(',');
@@ -182,6 +184,7 @@ public class ChatPanel : BasePanel
         isTimeToInsChatFrItem = true;
     }
 
+    //同步消息
     private string syncInsFrChatItemMessage;
 
     public void SyncInsFrChatItem(string message)
@@ -193,7 +196,7 @@ public class ChatPanel : BasePanel
     {
         facade.ChangeType();
         ctButton.ChangeButton(facade.GetUserType());
-        ChangeButton(facade.GetUserType());
+        ChangeChatButtonType(facade.GetUserType());
     }
 
 
@@ -231,7 +234,8 @@ public class ChatPanel : BasePanel
         StartCoroutine("InsSrollBar");
     }
 
-    public void ChangeButton(SwitchManager.UserType ut)
+    //更改Button模式
+    public void ChangeChatButtonType(SwitchManager.UserType ut)
     {
         foreach (var sitem in chatSelfItems)
         {

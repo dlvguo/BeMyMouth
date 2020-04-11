@@ -174,7 +174,7 @@ public class MainPanel : BasePanel
     {
     }
 
-    //初始化朋友Item
+    //实例话朋友item
     public void InstantiateFriendItem()
     {
         if (friendItems.Count > 0)
@@ -206,7 +206,6 @@ public class MainPanel : BasePanel
 
     public override void OnEnter()
     {
-        //        Invoke("iii", 1f);
         getFriendListRequest.SendRequest(facade.GetUserID());
         base.OnEnter();
         gameObject.SetActive(true);

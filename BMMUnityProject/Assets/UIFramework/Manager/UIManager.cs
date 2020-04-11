@@ -81,7 +81,7 @@ public class UIManager : BaseManager
     //    ParseUIPanelTypeJson();
     //}
 
-
+    //放进面板中
     public void PushPanel(UIPanelType panelType)
     {
         if (panelStack == null)
@@ -104,9 +104,9 @@ public class UIManager : BaseManager
     {
         if (panelTypesToPush != null)
         {
-            foreach (var VARIABLE in panelTypesToPush)
+            foreach (var panelType in panelTypesToPush)
             {
-                PushPanel(VARIABLE);
+                PushPanel(panelType);
             }
 
             panelTypesToPush = null;
@@ -138,21 +138,27 @@ public class UIManager : BaseManager
         //        DictDisp();
     }
 
+    //同步多个面板
     public void PushPanelsSync(List<UIPanelType> panelTypes)
     {
         panelTypesToPush = panelTypes;
     }
+
+
 
     public void PushPanelSync(UIPanelType uiPanelType)
     {
         panelTypeToPush = uiPanelType;
     }
 
+    //同步删除面板
     public void SyncPopPanel()
     {
         isSyncPopPanel = true;
     }
 
+
+    //这个主线程的方法 因此需要在Update更新
     public void PopPanel()
     {
         if (panelStack == null)

@@ -70,16 +70,18 @@ public class LoginPanel : BasePanel
         {
             if (facade.IsFirstTimeLogin())
             {
+                //首次登录注册
                 uiMng.PushPanelSync(UIPanelType.PreMenuPanel);
             }
             else
             {
                 List<UIPanelType> uiPanelTypes = new List<UIPanelType>();
                 uiPanelTypes.Add(UIPanelType.MainPanel);
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR    //TODO 讲道理是不需要聊天窗口的 方便测试吧 BAGA
-                //uiPanelTypes.Add(UIPanelType.ChatPanel);
-#endif
+                //TODO 讲道理是不需要聊天窗口的 因为有个聊天注册必须ChatPlane实例话才可以 于是先注册一个 再删除一个
+                uiPanelTypes.Add(UIPanelType.ChatPanel);
                 uiMng.PushPanelsSync(uiPanelTypes);
+                uiMng.SyncPopPanel();
+                //uiMng.GetPanel(UIPanelType.ChatPanel);//目的初始化下ChatPlane
             }
         }
         else

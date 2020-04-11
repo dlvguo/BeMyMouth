@@ -20,26 +20,27 @@ public class BaseRequest : MonoBehaviour
         }
     }
 
+    //实例话之后添加
     public virtual void Awake()
     {
-        Facade.AddRequest(requestCode,this);
+        Facade.AddRequest(requestCode, this);
     }
 
-//    public virtual void SendRequest( )
-//    {
-//
-//    }
+    //    public virtual void SendRequest( )
+    //    {
+    //
+    //    }
 
     public virtual void OnResPonse(string data)
     {
-        
+
     }
 
     public virtual void SendRequest(string data)
     {
-//        print(data);
-        Facade.SendRequest(controllerCode, requestCode,data );
+        //        print(data);
+        Facade.SendRequest(controllerCode, requestCode, data);
 
     }
-    
+
 }
