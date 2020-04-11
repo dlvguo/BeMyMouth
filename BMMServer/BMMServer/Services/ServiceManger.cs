@@ -28,6 +28,7 @@ namespace BMMServer.Services
         //处理请求
         public void HandleRequest(ControllerCode controllerCode, RequestCode requestCode, string data, Client client)
         {
+            //TODO根据这里添加需求即可
             BaseCtrlService controller;
             bool isGet = controllerDict.TryGetValue(controllerCode, out controller);
             if (!isGet)
