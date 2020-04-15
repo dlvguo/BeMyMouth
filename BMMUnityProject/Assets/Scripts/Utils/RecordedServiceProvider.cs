@@ -66,7 +66,7 @@ public class RecordedServiceProvider : LeapProvider
     void Start () {
         if (!provider)
             provider = GetComponent<LeapServiceProvider>();
-
+        
         // Fixed Update frame
         // During the fixed update we may provide and or save information
         provider.OnFixedFrame += frame =>
