@@ -20,9 +20,9 @@ public class LeapTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (serviceProvider.GetLeapController().IsConnected == false)
+        if (serviceProvider.GetLeapController().IsConnected)
         {
-            Debug.Log("FUCK");
+
         }
     }
 }
