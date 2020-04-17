@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 存放
+/// 存放Leap的手势
 /// </summary>
 public class LeapGestureEntity
 {
