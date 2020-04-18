@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 public class LeapRecognizeUtil
@@ -29,6 +33,44 @@ public class LeapRecognizeUtil
                 return PalmDirection.Down;
             return PalmDirection.Up;
         }
+    }
+
+    public static void TestString()
+    {
+        var txt = TextUtil.ReadText("Datas/1");
+        LeapGestureSerialize();
+    }
+
+    public static void LeapGestureSerialize(LeapGestureEntity entity = null)
+    {
+        LeapGestureEntity leapGestureEntity = new LeapGestureEntity()
+        {
+            HandType = HandType.DoubleHand,
+            LeftPalmDirection = PalmDirection.Behind,
+            RightPalmDirection = PalmDirection.Front,
+            LeftFingerDisatance = new List<float>(new float[] { 1f, 2f, 3f }),
+            RightFingersDist = new List<float>(new float[] { 1.2f, 3.2f, 4.3f })
+        };
+        LeapGestureEntity leapGestureEntity2 = new LeapGestureEntity()
+        {
+            HandType = HandType.DoubleHand,
+            LeftPalmDirection = PalmDirection.Behind,
+            RightPalmDirection = PalmDirection.Front,
+            LeftFingerDisatance = new List<float>(new float[] { 1f, 2f, 3f }),
+            RightFingersDist = new List<float>(new float[] { 1.2f, 3.2f, 4.3f })
+        };
+        List<LeapGestureEntity> l = new List<LeapGestureEntity>();
+        l.Add(leapGestureEntity);
+        l.Add(leapGestureEntity2);
+
+        string json1 = JsonConvert.SerializeObject(l);
+        string path = Application.dataPath + "/Resources/Datas/GestureDatas/test.json";
+        Debug.Log(path);
+
+        Debug.Log(json1);
+
+        var item = JsonConvert.DeserializeObject<List<LeapGestureEntity>>(json1);
+
     }
 
 }

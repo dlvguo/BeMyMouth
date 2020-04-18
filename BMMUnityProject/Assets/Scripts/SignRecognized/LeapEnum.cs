@@ -2,7 +2,7 @@
 //手掌方向
 public enum PalmDirection
 {
-    // 前后左右上下
+    None = 0,
     Front = 1,
     Behind = 2,
     Left = 3,
@@ -20,7 +20,8 @@ public enum FingersDirection
     Left = 3,
     Right = 4,
     Up = 5,
-    Down = 6
+    Down = 6,
+    None
 }
 
 //手类型 左手 右手 左右手

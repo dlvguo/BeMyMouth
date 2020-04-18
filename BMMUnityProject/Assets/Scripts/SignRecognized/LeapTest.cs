@@ -25,7 +25,7 @@ public class LeapTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("FUCK");
+            LeapRecognizeUtil.TestString();
             if (serviceProvider.GetLeapController().IsConnected)
             {
                 var hands = serviceProvider.GetLeapController().Frame().Hands;
@@ -38,6 +38,7 @@ public class LeapTest : MonoBehaviour
                     Debug.Log(LeapRecognizeUtil.FigurePalmDirection(hand.PalmNormal));
 
                 }
+                FileUtil.SaveFile(Application.persistentDataPath + "/Resources/Datas/GestureDatas", "1", "12", FileUtil.FileType.Json);
             }
         }
     }
