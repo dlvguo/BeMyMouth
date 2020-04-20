@@ -20,15 +20,31 @@ public class FileUtil
     /// <param name="fileType">文件类型</param>
     public static void SaveFile(string path, string filename, string content, FileType fileType)
     {
-        string filePath = string.Format("{0}/{1}.{2}", path, filename, fileType.ToString());
-        using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
+        string filePath = string.Format("{0}{1}.{2}", path, filename, fileType.ToString());
+        using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
         {
             using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
             {
                 sw.WriteLine(content);
             }
         }
+    }
 
-        Debug.Log(filePath);
+    /// <summary>
+    /// 读取文件
+    /// </summary>
+    /// <param name="path"></param>
+    /// <param name="filename"></param>
+    /// <param name="fileType"></param>
+    /// <returns></returns>
+    public static string ReadFile(string path, string filename, FileType fileType)
+    {
+        string filePath = string.Format("{0}{1}.{2}", path, filename, fileType.ToString());
+        string content = string.Empty;
+        if (File.Exists(filePath))
+        {
+            content = File.ReadAllText(filePath);
+        }
+        return content;
     }
 }

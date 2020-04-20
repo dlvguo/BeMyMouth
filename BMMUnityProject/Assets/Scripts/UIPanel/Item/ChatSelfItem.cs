@@ -76,7 +76,6 @@ public class ChatSelfItem : BaseItem
 
     public void OnButtonClick()
     {
-        //TODO
         cPanel.Display();
     }
 }

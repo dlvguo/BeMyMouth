@@ -68,7 +68,6 @@ public class ChatFriendItem : BaseItem
 
     public void OnButtonClick()
     {
-        //TODO
         cPanel.Display();
     }
 }

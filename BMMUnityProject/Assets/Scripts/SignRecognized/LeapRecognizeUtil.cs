@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -35,42 +36,50 @@ public class LeapRecognizeUtil
         }
     }
 
-    public static void TestString()
+    /// <summary>
+    /// 一个手势一个Json 这样方便存储
+    /// </summary>
+    /// <param name="entity"></param>
+    public static void LeapGestureSerialize(LeapGestureEntity entity, string gesname)
     {
-        var txt = TextUtil.ReadText("Datas/1");
-        LeapGestureSerialize();
+        //LeapGestureEntity leapGestureEntity = new LeapGestureEntity()
+        //{
+        //    HandType = HandType.DoubleHand,
+        //    LeftPalmDirection = PalmDirection.Behind,
+        //    RightPalmDirection = PalmDirection.Front,
+        //    LeftFingerDisatance = new List<float>(new float[] { 1f, 2f, 3f }),
+        //    RightFingersDist = new List<float>(new float[] { 1.2f, 3.2f, 4.3f })
+        //};
+        //LeapGestureEntity leapGestureEntity2 = new LeapGestureEntity()
+        //{
+        //    HandType = HandType.DoubleHand,
+        //    LeftPalmDirection = PalmDirection.Behind,
+        //    RightPalmDirection = PalmDirection.Front,
+        //    LeftFingerDisatance = new List<float>(new float[] { 1f, 2f, 3f }),
+        //    RightFingersDist = new List<float>(new float[] { 1.2f, 3.2f, 4.3f })
+        //};
+        //List<LeapGestureEntity> l = new List<LeapGestureEntity>();
+        //l.Add(leapGestureEntity);
+        //l.Add(leapGestureEntity2);
+        if (entity != null)
+        {
+            string json = JsonConvert.SerializeObject(entity);
+            FileUtil.SaveFile(Environment.CurrentDirectory + "/Datas/GestureDatas/", gesname, json, FileUtil.FileType.Json);
+        }
+
     }
 
-    public static void LeapGestureSerialize(LeapGestureEntity entity = null)
+    public static List<LeapGestureEntity> LeapGesturesDeserialize(string json)
     {
-        LeapGestureEntity leapGestureEntity = new LeapGestureEntity()
-        {
-            HandType = HandType.DoubleHand,
-            LeftPalmDirection = PalmDirection.Behind,
-            RightPalmDirection = PalmDirection.Front,
-            LeftFingerDisatance = new List<float>(new float[] { 1f, 2f, 3f }),
-            RightFingersDist = new List<float>(new float[] { 1.2f, 3.2f, 4.3f })
-        };
-        LeapGestureEntity leapGestureEntity2 = new LeapGestureEntity()
-        {
-            HandType = HandType.DoubleHand,
-            LeftPalmDirection = PalmDirection.Behind,
-            RightPalmDirection = PalmDirection.Front,
-            LeftFingerDisatance = new List<float>(new float[] { 1f, 2f, 3f }),
-            RightFingersDist = new List<float>(new float[] { 1.2f, 3.2f, 4.3f })
-        };
-        List<LeapGestureEntity> l = new List<LeapGestureEntity>();
-        l.Add(leapGestureEntity);
-        l.Add(leapGestureEntity2);
+        var leapGestures = JsonConvert.DeserializeObject<List<LeapGestureEntity>>(json);
+        return leapGestures;
+    }
 
-        string json1 = JsonConvert.SerializeObject(l);
-        string path = Application.dataPath + "/Resources/Datas/GestureDatas/test.json";
-        Debug.Log(path);
-
-        Debug.Log(json1);
-
-        var item = JsonConvert.DeserializeObject<List<LeapGestureEntity>>(json1);
-
+    //序列化
+    public static LeapGestureEntity LeapGestureDeserialize(string json)
+    {
+        var leapGesture = JsonConvert.DeserializeObject<LeapGestureEntity>(json);
+        return leapGesture;
     }
 
 }

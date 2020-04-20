@@ -161,7 +161,7 @@ public class ChatPanel : BasePanel
     {
         if (string.IsNullOrEmpty(msIF.text) || NowChatId == 0)
         {
-            uiMng.ShowPanelMessage(UIPanelType.ChatPanel, "对方不在线,这是哥在测试");//TODO 应该是测试用的
+            uiMng.ShowPanelMessage(UIPanelType.ChatPanel, "对方不在线,这是哥在测试");//TODO 聊天窗口测试用的
             return;
         }
 
@@ -257,7 +257,8 @@ public class ChatPanel : BasePanel
 
         chatScrollBar.value = 0;//TODO 滑动条问题要更新 contentSize有问题需要改改
     }
-#if UNITY_STANDALONE_WIN //TODO 估计是手语版本聊天窗口
+#if UNITY_STANDALONE_WIN 
+    //TODO 估计是手语版本聊天窗口
     //实例话LeapController 并且添加位置 注意这里明晚更改
     public void OnHandClick()
     {

@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using Leap;
+using Leap.Unity;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Leap.Unity;
-using Leap;
-using System;
 
-public class LeapTest : MonoBehaviour
+public class LeapGesturesRecoder : MonoBehaviour
 {
     private LeapServiceProvider serviceProvider;
 
@@ -25,7 +25,6 @@ public class LeapTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            LeapRecognizeUtil.TestString();
             if (serviceProvider.GetLeapController().IsConnected)
             {
                 var hands = serviceProvider.GetLeapController().Frame().Hands;
@@ -38,7 +37,11 @@ public class LeapTest : MonoBehaviour
                     Debug.Log(LeapRecognizeUtil.FigurePalmDirection(hand.PalmNormal));
 
                 }
-                FileUtil.SaveFile(Application.persistentDataPath + "/Resources/Datas/GestureDatas", "1", "12", FileUtil.FileType.Json);
+                //LeapRecognizeUtil.LeapGestureSerialize();
+                var str = FileUtil.ReadFile(Environment.CurrentDirectory + "/Datas/GestureDatas/", "test", FileUtil.FileType.Json);
+                var items = LeapRecognizeUtil.LeapGestureDeserialize(str);
+
+                Debug.Log(FileUtil.ReadFile(Environment.CurrentDirectory + "/Datas/GestureDatas/", "test", FileUtil.FileType.Json));
             }
         }
     }

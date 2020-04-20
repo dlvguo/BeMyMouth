@@ -74,7 +74,7 @@ public class SearchFriendPanel : BasePanel
             names.Add(name);
         }
 
-        //TODO
+        //TODO 添加朋友
     }
 
     private List<string> names = new List<string>();
@@ -90,7 +90,7 @@ public class SearchFriendPanel : BasePanel
         //            }
         //        }
 
-        {
+        { //TODO 搜索朋友有问题这里
             for (int i = 1; i < names.Count; i++)
             {
                 InsSerarchFriendItem(names[i], names[0]);
