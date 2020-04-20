@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Leap;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -69,6 +70,7 @@ public class LeapRecognizeUtil
 
     }
 
+    //根据Json获取LeapGesEntity
     public static List<LeapGestureEntity> LeapGesturesDeserialize(string json)
     {
         var leapGestures = JsonConvert.DeserializeObject<List<LeapGestureEntity>>(json);
@@ -80,6 +82,40 @@ public class LeapRecognizeUtil
     {
         var leapGesture = JsonConvert.DeserializeObject<LeapGestureEntity>(json);
         return leapGesture;
+    }
+
+    public static List<float> FigureFingersDist(Hand hand)
+    {
+        List<float> dists = new List<float>();
+        var fingers = hand.Fingers;
+        //计算为 手掌->1/2/3/4/5 
+        for (int i = 0; i < fingers.Count; i++)
+        {
+            float dist = Vector3.Distance(LVConvertToUV3(hand.PalmPosition), LVConvertToUV3(fingers[i].TipPosition));
+            dists.Add(dist);
+        }
+
+        //计算各手指之间距离 1->2/3/4/5 2->3/4/5 3->4/5 4->5
+        for (int i = 0; i < fingers.Count - 1; i++)
+        {
+            for (int j = i + 1; j < fingers.Count; j++)
+            {
+                float dist = Vector3.Distance(LVConvertToUV3(fingers[i + 1].TipPosition), LVConvertToUV3(fingers[i].TipPosition));
+                dists.Add(dist);
+            }
+        }
+        return dists;
+    }
+
+    /// <summary>
+    /// 将Leap的Vector转成Unity V3
+    /// </summary>
+    /// <param name="a"></param>
+    /// <returns></returns>
+    public static Vector3 LVConvertToUV3(Vector a)
+    {
+        Vector3 vector = new Vector3(a.x, a.y, a.z);
+        return vector;
     }
 
 }

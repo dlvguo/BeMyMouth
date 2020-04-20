@@ -22,14 +22,18 @@ public class LeapGestureEntity
     public PalmDirection RightPalmDirection { get; set; }
 
     /// <summary>
-    /// 左手坐标
+    /// 各个手指关节计算 最短距离
     /// </summary>
-    public List<float> LeftFingerDisatance { get; set; }
+    public List<float> LeftFingersDist { get; set; }
     /// <summary>
-    /// 右手坐标
+    /// 左手的手指是否展开/收缩
     /// </summary>
+    public List<bool> LeftFingersExtenison { get; set; }
+
     public List<float> RightFingersDist { get; set; }
-    //各个手指关节计算 最短距离
+
+    public List<bool> RightFingersExtenison { get; set; }
+
 
 
 }

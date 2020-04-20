@@ -257,7 +257,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Submit
+  m_Text: "\u786E\u5B9A"
 --- !u!222 &281362529
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -334,9 +334,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6309R\u952E\u8FDB\u884C\u8BB0\u5F55\uFF0C\u6309S\u952E\u8FDB\u884C\u4FDD\u5B58\u3002\n
-    \               \u6309L\u8FDB\u884C\u67E5\u770B\u3002\nE-->Reset,   Space-->Pause,
-    \ Z-->Play"
+  m_Text: "\u6309R\u952E\u5F00\u59CB\u8BB0\u5F55\uFF0C\u6309S\u952E\u4FDD\u5B58\u624B\u52BF\u3002\n\u7A7A\u683C\u952E
+    \ \u6682\u505C/\u7EE7\u7EED"
 --- !u!222 &556691958
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -429,11 +428,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1306264136713395861, guid: 85c2c33a9cbced44abd052dd1046e87b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1306264137328679044, guid: 85c2c33a9cbced44abd052dd1046e87b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -492,21 +486,29 @@ PrefabInstance:
     - target: {fileID: 1306264137328679047, guid: 85c2c33a9cbced44abd052dd1046e87b,
         type: 3}
       propertyPath: m_ClearFlags
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1306264137328679047, guid: 85c2c33a9cbced44abd052dd1046e87b,
         type: 3}
-      propertyPath: orthographic
-      value: 0
+      propertyPath: m_BackGroundColor.r
+      value: 0.3047348
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306264137328679047, guid: 85c2c33a9cbced44abd052dd1046e87b,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.6037736
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306264137328679047, guid: 85c2c33a9cbced44abd052dd1046e87b,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.5891424
       objectReference: {fileID: 0}
     - target: {fileID: 1306264137328679051, guid: 85c2c33a9cbced44abd052dd1046e87b,
         type: 3}
       propertyPath: m_Name
       value: Head Mounted Camera-1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1306264136713395861, guid: 85c2c33a9cbced44abd052dd1046e87b, type: 3}
-    - {fileID: 1306264136713395857, guid: 85c2c33a9cbced44abd052dd1046e87b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85c2c33a9cbced44abd052dd1046e87b, type: 3}
 --- !u!1 &646316872
 GameObject:
@@ -1287,7 +1289,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Submit
+  m_Text: "\u786E\u5B9A"
 --- !u!222 &1326814003
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1946,31 +1948,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2019141597 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1306264136713395862, guid: 85c2c33a9cbced44abd052dd1046e87b,
-    type: 3}
-  m_PrefabInstance: {fileID: 621796664}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2019141598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019141597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d7a25b1873509d4c9284e1e8434f1a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2019141604 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1306264136713395859, guid: 85c2c33a9cbced44abd052dd1046e87b,
     type: 3}
   m_PrefabInstance: {fileID: 621796664}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019141597}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 025cc0fa7b46aa541aba29d28d35ac09, type: 3}
