@@ -489,12 +489,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1306264137328679047, guid: 85c2c33a9cbced44abd052dd1046e87b,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306264137328679047, guid: 85c2c33a9cbced44abd052dd1046e87b,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1306264137328679051, guid: 85c2c33a9cbced44abd052dd1046e87b,
         type: 3}
       propertyPath: m_Name
       value: Head Mounted Camera-1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1306264136713395861, guid: 85c2c33a9cbced44abd052dd1046e87b, type: 3}
+    - {fileID: 1306264136713395857, guid: 85c2c33a9cbced44abd052dd1046e87b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 85c2c33a9cbced44abd052dd1046e87b, type: 3}
 --- !u!1 &646316872
 GameObject:
@@ -982,7 +994,7 @@ MonoBehaviour:
   hitThreshold: 0.05
   downtime: 0.5
   lastHit: 0
-  handController: {fileID: 2019141601}
+  handController: {fileID: 0}
   paused: 0
 --- !u!4 &1176974737
 Transform:
@@ -1892,7 +1904,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1940,7 +1952,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 621796664}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2019141599
+--- !u!114 &2019141598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1949,19 +1961,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2019141597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31c026b807a61ef47a6d633a112676c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2019141601 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1306264136713395857, guid: 85c2c33a9cbced44abd052dd1046e87b,
-    type: 3}
-  m_PrefabInstance: {fileID: 621796664}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019141597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dede7df77e1c2c642b1b319d395a7d80, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d7a25b1873509d4c9284e1e8434f1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2019141604 stripped
