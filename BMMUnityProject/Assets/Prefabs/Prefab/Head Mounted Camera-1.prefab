@@ -7479,9 +7479,8 @@ GameObject:
   - component: {fileID: 1306264136713395856}
   - component: {fileID: 1306264136713395859}
   - component: {fileID: 1306264136713395858}
-  - component: {fileID: 1306264136713395861}
-  - component: {fileID: 1306264136713395857}
   - component: {fileID: 1306264136713395860}
+  - component: {fileID: 2019141598}
   m_Layer: 0
   m_Name: LeapHandController
   m_TagString: Untagged
@@ -7570,57 +7569,6 @@ MonoBehaviour:
     HandPostProcesses:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &1306264136713395861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306264136713395862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db14626dd20ee14cb80a076d5106cd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recordedProvider: {fileID: 1306264136713395860}
-  recorderFilePath: "AnimiFile\u81EA\u5236\\\u63D0\u4F9B.json"
-  playerFilePath: "AnimiFile\u81EA\u5236\\\u63D0\u4F9B.json"
-  gestureSaveFilePath: "\u81EA\u5236"
-  isPose: 1
-  keyToRecord: 114
-  keyToSave: 115
-  keyToReset: 101
-  keyToPause: 32
-  keyToPlay: 122
-  keyToLoad: 108
-  message: {fileID: 0}
---- !u!114 &1306264136713395857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306264136713395862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dede7df77e1c2c642b1b319d395a7d80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fingerDis:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  fingerCount: 0
-  angle:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  smallestVelocity: 0.4
-  deltaVelocity: 0.7
 --- !u!114 &1306264136713395860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7628,13 +7576,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306264136713395862}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 002b84a6a18ac724283e5350be8a1b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   editTimePose: 0
   provider: {fileID: 1306264136713395859}
+--- !u!114 &2019141598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306264136713395862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7a25b1873509d4c9284e1e8434f1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1306264136719496829
 GameObject:
   m_ObjectHideFlags: 0
@@ -12615,7 +12575,7 @@ GameObject:
   - component: {fileID: 1306264137328679049}
   - component: {fileID: 1306264137328679048}
   m_Layer: 0
-  m_Name: Head Mounted Camera(Full)
+  m_Name: Head Mounted Camera-1
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12646,7 +12606,7 @@ Camera:
   m_GameObject: {fileID: 1306264137328679051}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 0.019607844}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}

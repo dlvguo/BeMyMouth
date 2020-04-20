@@ -9,6 +9,7 @@ public class LeapGesturesRecoder : MonoBehaviour
 {
     private LeapServiceProvider serviceProvider;
 
+    //用于记录LeapController
     private void Awake()
     {
         serviceProvider = this.GetComponent<LeapServiceProvider>();
