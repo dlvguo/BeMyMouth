@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LeapGesturesRecoder : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class LeapGesturesRecoder : MonoBehaviour
 
     //是否记录
     private bool recode = false;
+
+    public InputField gestureInputField;
 
     private List<LeapGestureEntity> leapGestureEntities;
 
@@ -41,7 +44,7 @@ public class LeapGesturesRecoder : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                recode = true;
+                RecodeGes(GetLeapController().Frame());
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -52,12 +55,11 @@ public class LeapGesturesRecoder : MonoBehaviour
                 SaveGestures();
                 recode = false;
             }
-
-            //无暂停
-            if (!pause && recode)
-            {
-                RecodeGes(GetLeapController().Frame());
-            }
+            ////无暂停
+            //if (!pause && recode)
+            //{
+            //    RecodeGes(GetLeapController().Frame());
+            //}
 
         }
     }
