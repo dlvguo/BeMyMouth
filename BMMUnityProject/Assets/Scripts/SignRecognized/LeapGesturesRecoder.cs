@@ -22,6 +22,8 @@ public class LeapGesturesRecoder : MonoBehaviour
 
     public InputField gestureInputField;
 
+    public Button tipBtu;
+
     private List<LeapGestureEntity> leapGestureEntities;
 
     //用于记录LeapController
@@ -33,7 +35,9 @@ public class LeapGesturesRecoder : MonoBehaviour
 
     void Start()
     {
-
+        tipBtu.gameObject.SetActive(false);
+        //关闭
+        tipBtu.onClick.AddListener(() => tipBtu.gameObject.SetActive(false));
     }
 
     // Update is called once per frame
@@ -44,16 +48,34 @@ public class LeapGesturesRecoder : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                RecodeGes(GetLeapController().Frame());
+                //R记录手势
+                if (gestureInputField.text == string.Empty)
+                {
+                    tipBtu.gameObject.SetActive(true);
+                }
+                else
+                {
+                    RecodeGes(GetLeapController().Frame());
+                }
+
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 pause = pause == true ? false : true;
             }
+            //S保存记录
             else if (Input.GetKeyDown(KeyCode.S))
             {
-                SaveGestures();
-                recode = false;
+                if (gestureInputField.text == string.Empty)
+                {
+                    tipBtu.gameObject.SetActive(true);
+                }
+                else
+                    SaveGestures();
+            }
+            else if (Input.GetKeyDown(KeyCode.Z))
+            {
+
             }
             ////无暂停
             //if (!pause && recode)
@@ -72,7 +94,7 @@ public class LeapGesturesRecoder : MonoBehaviour
         if (frame.Id == lastFrameId)
             return;
         lastFrameId = frame.Id;
-        if (frame.Hands.Count > 0)
+        if (frame.Hands.Count > 0) 
             leapGestureEntities.Add(BuildLeapGestureEntity(frame));
     }
 
@@ -81,12 +103,12 @@ public class LeapGesturesRecoder : MonoBehaviour
     {
         if (leapGestureEntities.Count != 0)
         {
-            //LeapRecognizeUtil.LeapGestureSerialize();
             //var str = FileUtil.ReadFile(Environment.CurrentDirectory + "/Datas/GestureDatas/", "test", FileUtil.FileType.Json);
-
-            //Debug.Log(FileUtil.ReadFile(Environment.CurrentDirectory + "/Datas/GestureDatas/", "test", FileUtil.FileType.Json));
+            var entity = LeapRecognizeUtil.FigureAverage(leapGestureEntities);
+            Debug.Log("LastGes");
+            ConsoleLeapInfo(entity);
+            LeapRecognizeUtil.LeapGestureSerialize(entity, gestureInputField.text);
         }
-
         leapGestureEntities.Clear();
     }
 
@@ -135,6 +157,8 @@ public class LeapGesturesRecoder : MonoBehaviour
                 }
             }
         }
+        Debug.Log("RecodeGes");
+        ConsoleLeapInfo(leapGestureEntity);
         return leapGestureEntity;
     }
 
@@ -143,5 +167,11 @@ public class LeapGesturesRecoder : MonoBehaviour
     Controller GetLeapController()
     {
         return serviceProvider.GetLeapController();
+    }
+
+    //调试的时候使用
+    private void ConsoleLeapInfo(LeapGestureEntity leapGestureEntity)
+    {
+        Debug.Log(leapGestureEntity);
     }
 }

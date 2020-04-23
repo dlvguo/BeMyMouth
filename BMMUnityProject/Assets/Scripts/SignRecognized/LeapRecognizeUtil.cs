@@ -67,7 +67,70 @@ public class LeapRecognizeUtil
             string json = JsonConvert.SerializeObject(entity);
             FileUtil.SaveFile(Environment.CurrentDirectory + "/Datas/GestureDatas/", gesname, json, FileUtil.FileType.Json);
         }
+    }
 
+    public static LeapGestureEntity FigureAverage(List<LeapGestureEntity> leapGestureEntities)
+    {
+        LeapGestureEntity leapGestureEntity = new LeapGestureEntity()
+        {
+            HandType = leapGestureEntities[0].HandType,
+            LeftPalmDirection = leapGestureEntities[0].LeftPalmDirection,
+            RightPalmDirection = leapGestureEntities[0].RightPalmDirection,
+            LeftFingersDist = new List<float>(leapGestureEntities[0].LeftFingersDist),
+            RightFingersDist = new List<float>(leapGestureEntities[0].RightFingersDist),
+            LeftFingersExtenison = new List<bool>(leapGestureEntities[0].LeftFingersExtenison),
+            RightFingersExtenison = new List<bool>(leapGestureEntities[0].RightFingersExtenison)
+        };
+
+        //计算各个角度是平均值
+        int count = leapGestureEntities.Count;
+        if (leapGestureEntity.HandType == HandType.DoubleHand)
+        {
+            for (int i = 1; i < leapGestureEntities.Count; i++)
+            {
+                for (int j = 0; j < leapGestureEntities[i].LeftFingersDist.Count; j++)
+                {
+                    leapGestureEntity.LeftFingersDist[j] += leapGestureEntities[i].LeftFingersDist[j];
+                    leapGestureEntity.RightFingersDist[j] += leapGestureEntities[i].RightFingersDist[j];
+                }
+            }
+        }
+        else if (leapGestureEntity.HandType == HandType.LeftHand)
+        {
+            for (int i = 1; i < leapGestureEntities.Count; i++)
+            {
+                for (int j = 0; j < leapGestureEntities[i].LeftFingersDist.Count; j++)
+                {
+                    leapGestureEntity.LeftFingersDist[j] += leapGestureEntities[i].LeftFingersDist[j];
+                }
+            }
+        }
+        else
+        {
+            for (int i = 1; i < leapGestureEntities.Count; i++)
+            {
+                for (int j = 0; j < leapGestureEntities[i].LeftFingersDist.Count; j++)
+                {
+                    leapGestureEntity.LeftFingersDist[j] += leapGestureEntities[i].LeftFingersDist[j];
+                }
+            }
+        }
+        if (leapGestureEntity.LeftFingersDist.Count > 0)
+        {
+            for (int j = 0; j < leapGestureEntity.LeftFingersDist.Count; j++)
+            {
+                leapGestureEntity.LeftFingersDist[j] /= count;
+            }
+
+        }
+        if (leapGestureEntity.RightFingersDist.Count > 0)
+        {
+            for (int j = 0; j < leapGestureEntity.RightFingersDist.Count; j++)
+            {
+                leapGestureEntity.RightFingersDist[j] /= count;
+            }
+        }
+        return leapGestureEntity;
     }
 
     //根据Json获取LeapGesEntity
