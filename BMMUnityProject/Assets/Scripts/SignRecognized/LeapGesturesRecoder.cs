@@ -35,6 +35,7 @@ public class LeapGesturesRecoder : MonoBehaviour
 
     void Start()
     {
+       var item=  LeapGestureClassifier.GetInstance;
         tipBtu.gameObject.SetActive(false);
         //关闭
         tipBtu.onClick.AddListener(() => tipBtu.gameObject.SetActive(false));
