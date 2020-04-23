@@ -94,7 +94,7 @@ public class LeapGesturesRecoder : MonoBehaviour
         if (frame.Id == lastFrameId)
             return;
         lastFrameId = frame.Id;
-        if (frame.Hands.Count > 0) 
+        if (frame.Hands.Count > 0)
             leapGestureEntities.Add(BuildLeapGestureEntity(frame));
     }
 
@@ -172,6 +172,7 @@ public class LeapGesturesRecoder : MonoBehaviour
     //调试的时候使用
     private void ConsoleLeapInfo(LeapGestureEntity leapGestureEntity)
     {
-        Debug.Log(leapGestureEntity);
+        string json = Newtonsoft.Json.JsonConvert.SerializeObject(leapGestureEntity);
+        Debug.Log(json);
     }
 }

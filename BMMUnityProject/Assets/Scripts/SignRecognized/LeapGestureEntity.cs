@@ -34,6 +34,4 @@ public class LeapGestureEntity
 
     public List<bool> RightFingersExtenison { get; set; }
 
-
-
 }

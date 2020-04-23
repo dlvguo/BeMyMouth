@@ -69,6 +69,8 @@ public class LeapRecognizeUtil
         }
     }
 
+
+
     public static LeapGestureEntity FigureAverage(List<LeapGestureEntity> leapGestureEntities)
     {
         LeapGestureEntity leapGestureEntity = new LeapGestureEntity()
@@ -109,9 +111,9 @@ public class LeapRecognizeUtil
         {
             for (int i = 1; i < leapGestureEntities.Count; i++)
             {
-                for (int j = 0; j < leapGestureEntities[i].LeftFingersDist.Count; j++)
+                for (int j = 0; j < leapGestureEntities[i].RightFingersDist.Count; j++)
                 {
-                    leapGestureEntity.LeftFingersDist[j] += leapGestureEntities[i].LeftFingersDist[j];
+                    leapGestureEntity.RightFingersDist[j] += leapGestureEntities[i].RightFingersDist[j];
                 }
             }
         }

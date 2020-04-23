@@ -32,7 +32,6 @@ public class ChatFriendItem : BaseItem
             voiceButton.gameObject.SetActive(true);
             mainButton = voiceButton;
             backButton = handButton;
-
         }
         else
         {
@@ -40,7 +39,6 @@ public class ChatFriendItem : BaseItem
             handButton.gameObject.SetActive(true);
             mainButton = handButton;
             backButton = voiceButton;
-
         }
     }
     private void ButtonAdptation()
@@ -63,7 +61,7 @@ public class ChatFriendItem : BaseItem
         Message = message;
         iF.text = Message;
         Invoke("ButtonAdptation", 0.03f);
-        
+
     }
 
     public void OnButtonClick()
