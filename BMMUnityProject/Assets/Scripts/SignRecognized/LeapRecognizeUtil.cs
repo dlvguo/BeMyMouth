@@ -149,6 +149,11 @@ public class LeapRecognizeUtil
         return leapGesture;
     }
 
+    /// <summary>
+    /// 手指之间的距离
+    /// </summary>
+    /// <param name="hand"></param>
+    /// <returns></returns>
     public static List<float> FigureFingersDist(Hand hand)
     {
         List<float> dists = new List<float>();
@@ -183,4 +188,19 @@ public class LeapRecognizeUtil
         return vector;
     }
 
+    /// <summary>
+    /// 计算距离
+    /// </summary>
+    /// <param name="l1"></param>
+    /// <param name="l2"></param>
+    /// <returns></returns>
+    public static float FigureListDist(List<float> l1, List<float> l2)
+    {
+        float dist = 0;
+        for (int i = 0, j = 0; i < l1.Count && j < l2.Count; i++, j++)
+        {
+            dist += Mathf.Abs(l1[i] - l2[j]);
+        }
+        return dist;
+    }
 }

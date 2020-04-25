@@ -41,7 +41,7 @@ public class LeapRecorderController : MonoBehaviour
         {
             Debug.Log("Record");
             string s = recorderFilePath.Split('\\')[1].Split('.')[0];
-            message.text = s+" Gesture Being Record";
+            message.text = s + " Gesture Being Record";
             recorder.Reset();
             recorder.state = RecorderState.Recording;
         }

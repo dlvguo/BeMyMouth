@@ -68,7 +68,7 @@ public class FileUtil
         foreach (var filename in filenames)
         {
             var str = Regex.Replace(filename, @".+[/\\]", "");
-            str= Regex.Replace(str, @"\..*", "");
+            str = Regex.Replace(str, @"\..*", "");
             names.Add(str);
         }
         return names;
