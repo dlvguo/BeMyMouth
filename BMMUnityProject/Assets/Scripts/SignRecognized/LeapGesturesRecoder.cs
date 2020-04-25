@@ -17,9 +17,6 @@ public class LeapGesturesRecoder : MonoBehaviour
     //记录最后一帧的手势
     private long lastFrameId = 0;
 
-    //是否记录
-    private bool recode = false;
-
     public InputField gestureInputField;
 
     public Button tipBtu;
