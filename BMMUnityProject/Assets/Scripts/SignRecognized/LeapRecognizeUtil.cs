@@ -203,4 +203,54 @@ public class LeapRecognizeUtil
         }
         return dist;
     }
+
+    //根据一帧创建LeapGesture
+    public static LeapGestureEntity BuildLeapGestureEntity(Frame frame)
+    {
+        LeapGestureEntity leapGestureEntity = new LeapGestureEntity()
+        {
+            LeftFingersDist = new List<float>(),
+            RightFingersDist = new List<float>(),
+            LeftPalmDirection = PalmDirection.None,
+            RightPalmDirection = PalmDirection.None,
+            LeftFingersExtenison = new List<bool>(new bool[5] { false, false, false, false, false }),
+            RightFingersExtenison = new List<bool>(new bool[5] { false, false, false, false, false })
+        };
+        //获取手掌
+        var hands = frame.Hands;
+        if (hands.Count == 2)
+        {
+            leapGestureEntity.HandType = HandType.DoubleHand;
+        }
+        else
+        {
+            leapGestureEntity.HandType = hands[0].IsLeft ? HandType.LeftHand : HandType.RightHand;
+        }
+        //TODO 暂时只计算5个手指 和手掌方向的向量
+        for (int i = 0; i < hands.Count; i++)
+        {
+            Hand hand = hands[i];
+            if (hand.IsLeft)
+            {
+                leapGestureEntity.LeftPalmDirection = LeapRecognizeUtil.FigurePalmDirection(hand.PalmNormal);
+                leapGestureEntity.LeftFingersDist = LeapRecognizeUtil.FigureFingersDist(hand);
+                for (int j = 0; j < 5; j++)
+                {
+                    leapGestureEntity.LeftFingersExtenison[i] = hand.Fingers[i].IsExtended;
+                }
+            }
+            else
+            {
+                leapGestureEntity.RightPalmDirection = LeapRecognizeUtil.FigurePalmDirection(hand.PalmNormal);
+                leapGestureEntity.RightFingersDist = LeapRecognizeUtil.FigureFingersDist(hand);
+                for (int j = 0; j < 5; j++)
+                {
+                    leapGestureEntity.RightFingersExtenison[i] = hand.Fingers[i].IsExtended;
+                }
+            }
+        }
+        Debug.Log("RecodeGes");
+        return leapGestureEntity;
+    }
+
 }

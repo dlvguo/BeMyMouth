@@ -33,12 +33,19 @@ public class LeapGesturesRecoder : MonoBehaviour
         serviceProvider = this.GetComponent<LeapServiceProvider>();
     }
 
+
+    //测试
+    LeapGestureClassifier gestureClassifier;
+
+
     void Start()
     {
-       var item=  LeapGestureClassifier.GetInstance;
+        var item = LeapGestureClassifier.GetInstance;
         tipBtu.gameObject.SetActive(false);
         //关闭
         tipBtu.onClick.AddListener(() => tipBtu.gameObject.SetActive(false));
+        gestureClassifier = LeapGestureClassifier.GetInstance;
+
     }
 
     // Update is called once per frame
@@ -76,7 +83,8 @@ public class LeapGesturesRecoder : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Z))
             {
-
+                //手势识别
+                RecognizeTest(GetLeapController().Frame());
             }
             ////无暂停
             //if (!pause && recode)
@@ -87,6 +95,16 @@ public class LeapGesturesRecoder : MonoBehaviour
         }
     }
 
+
+    #region 手势识别测试
+
+    void RecognizeTest(Frame frame)
+    {
+        var entity = LeapRecognizeUtil.BuildLeapGestureEntity(frame);
+        gestureClassifier.GesRecognize(entity);
+    }
+
+    #endregion
 
 
     //记录手势
@@ -126,7 +144,7 @@ public class LeapGesturesRecoder : MonoBehaviour
             RightFingersExtenison = new List<bool>(new bool[5] { false, false, false, false, false })
         };
         //获取手掌
-        var hands = serviceProvider.GetLeapController().Frame().Hands;
+        var hands = frame.Hands;
         if (hands.Count == 2)
         {
             leapGestureEntity.HandType = HandType.DoubleHand;

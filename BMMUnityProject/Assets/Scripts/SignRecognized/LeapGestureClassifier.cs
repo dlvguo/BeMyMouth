@@ -108,6 +108,4 @@ public class LeapGestureClassifier
         else
             Debug.Log("未找到手类型字典");
     }
-
-
 }
