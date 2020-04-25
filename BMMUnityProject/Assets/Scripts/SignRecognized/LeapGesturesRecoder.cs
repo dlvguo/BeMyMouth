@@ -42,7 +42,6 @@ public class LeapGesturesRecoder : MonoBehaviour
         //关闭
         tipBtu.onClick.AddListener(() => tipBtu.gameObject.SetActive(false));
         gestureClassifier = LeapGestureClassifier.GetInstance;
-
     }
 
     // Update is called once per frame
