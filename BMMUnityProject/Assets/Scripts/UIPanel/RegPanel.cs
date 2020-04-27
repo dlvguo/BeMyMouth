@@ -56,12 +56,13 @@ public class RegPanel : BasePanel
         }
     }
 
+    //验证码发送
     private void OnSendCodeBtnCLick()
-    { 
+    {
         if (string.IsNullOrEmpty(mailIF.text))
         {
             uiMng.ShowIFWarningMessage(mailIF, "电子邮件不能为空");
-                return;
+            return;
         }
         verifyRepeatRequest.SendRequest(mailIF.text);
     }
@@ -71,17 +72,16 @@ public class RegPanel : BasePanel
         isSyncRandomGuardCode = true;
     }
 
- 
-    public void OnVerifyRepateResponse(ReturnCode  returnCode)
+    //验证回复
+    public void OnVerifyRepateResponse(ReturnCode returnCode)
     {
         if (returnCode == ReturnCode.Success)
         {
             SyncRandomGuardCode();
-
         }
         else
         {
-            uiMng.SyncShowPanelMessage(UIPanelType.RegPanel,"该邮箱已注册，请更换其他邮箱");
+            uiMng.SyncShowPanelMessage(UIPanelType.RegPanel, "该邮箱已注册，请更换其他邮箱");
         }
     }
 
@@ -120,11 +120,13 @@ public class RegPanel : BasePanel
         registerRequest.SendRequest(mailIF.text, passwordIF.text);
     }
 
+    //回应
     public void OnRegReponse(ReturnCode returnCode)
     {
         if (returnCode == ReturnCode.Success)
         {
             uiMng.SyncPopPanel();
+            Debug.Log("注册成功");
         }
         else
         {

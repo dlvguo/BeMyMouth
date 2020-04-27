@@ -42,6 +42,7 @@ public class ClientManager : BaseManager
         clientSocket.BeginReceive(msg.Data, msg.dynamicLength, msg.RemainSize, SocketFlags.None, ReciveCallBack, null);
     }
 
+    //接收回调
     private void ReciveCallBack(IAsyncResult ar)
     {
 
@@ -62,6 +63,8 @@ public class ClientManager : BaseManager
         }
 
     }
+
+    //处理回调反馈
     private void OnProcessDataCallBack(RequestCode requestCode, string data)
     {
         facade.HandleResponse(requestCode, data);

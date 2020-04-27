@@ -8,36 +8,37 @@ public class RequestManager : BaseManager
 {
     public RequestManager(Facade facade) : base(facade)
     {
-        
-        
+
+
     }
-    
+
     private Dictionary<RequestCode, BaseRequest> requestDic = new Dictionary<RequestCode, BaseRequest>();
 
     public void AddRequest(RequestCode requestCode, BaseRequest request)
     {
-        requestDic.Add(requestCode,request);
+        requestDic.Add(requestCode, request);
     }
 
     public BaseRequest GetRequest(RequestCode requestCode)
     {
-     return   requestDic.TryGet(requestCode);
+        return requestDic.TryGet(requestCode);
     }
 
     public void RemoveRequest(RequestCode requestCode)
     {
         requestDic.Remove(requestCode);
     }
-     
 
-    public void HandleResPonse(RequestCode requestCode ,string data)
+
+    //TODO请求管理中处理回馈
+    public void HandleResPonse(RequestCode requestCode, string data)
     {
-       
+        //从字典中获取请求回馈
         BaseRequest request = requestDic.TryGet(requestCode);
         if (request == null)
         {
-            Debug.LogWarning("无法得到ActionCode[" + requestCode + "]对应的Request类");return;
+            Debug.LogWarning("无法得到ActionCode[" + requestCode + "]对应的Request类"); return;
         }
-         request.OnResPonse(data);
+        request.OnResPonse(data);
     }
 }

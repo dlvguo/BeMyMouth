@@ -16,13 +16,14 @@ public class VerifyRepeatRequest : BaseRequest
     }
 
     public override void SendRequest(string mail)
-    {print(mail);
+    {
+        print(mail);
         base.SendRequest(mail);
     }
 
     public override void OnResPonse(string data)
     {
-       //ReturnCode returnCode = (ReturnCode) int.Parse(data);
+        //ReturnCode returnCode = (ReturnCode) int.Parse(data);
         ReturnCode returnCode = ReturnCode.Success;
         regPanel.OnVerifyRepateResponse(returnCode);
     }

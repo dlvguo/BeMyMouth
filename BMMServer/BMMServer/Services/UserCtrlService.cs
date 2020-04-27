@@ -11,7 +11,6 @@ namespace BMMServer.Services
 {
     public class UserCtrlService : BaseCtrlService
     {
-
         public UserCtrlService()
         {
             controllerCode = ControllerCode.User;

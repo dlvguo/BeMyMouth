@@ -12,12 +12,12 @@ public class Mail : MonoBehaviour
         {
             print(guardCode);
             MailMessage mailMsg = new MailMessage();
-            mailMsg.From = new MailAddress("zgzzhenhao@163.com", "SRLS");
+            mailMsg.From = new MailAddress("512739421@qq.com", "BeMyMouth");
             mailMsg.To.Add(new MailAddress(mailAddress, "duifang"));
             mailMsg.Subject = "验证您的身份";
-            mailMsg.Body = "Here is the SLRS Guard code you need:" + guardCode;
-            SmtpClient client = new SmtpClient("smtp.163.com", 25);  //发送服务器
-            client.Credentials = (ICredentialsByHost)new NetworkCredential("zgzzhenhao@163.com", "978102863");
+            mailMsg.Body = "Here is the BeMyMouth Guard code you need:" + guardCode;
+            SmtpClient client = new SmtpClient("smtp.qq.com", 25);  //发送服务器
+            client.Credentials = (ICredentialsByHost)new NetworkCredential("512739421@qq.com", "ryplrzvgysrebijf");
             print(mailMsg);
             client.Send(mailMsg);
         }
