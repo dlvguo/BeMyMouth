@@ -263,7 +263,9 @@ namespace BMMServer.DBS
                     User user = new User()
                     {
                         UserName = username,
-                        Password = password
+                        Password = password,
+                        NickName = "用户007",
+                        IsFirstLogin = true
                     };
                     db.Users.Add(user);
                     db.SaveChanges();
@@ -273,6 +275,7 @@ namespace BMMServer.DBS
             }
             catch (Exception e)
             {
+                Console.WriteLine("创建用户失败");
                 return false;
             }
         }
