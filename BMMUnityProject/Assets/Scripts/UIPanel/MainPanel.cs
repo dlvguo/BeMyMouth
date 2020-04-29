@@ -126,6 +126,7 @@ public class MainPanel : BasePanel
         syncId = strs[1];
     }
 
+    //同步名称
     private string syncNickName = string.Empty;
     private string syncId = string.Empty;
 
@@ -204,6 +205,16 @@ public class MainPanel : BasePanel
         }
     }
 
+    //更新名称
+    public void InsNickName()
+    {
+        name.text = facade.GetNickname();
+    }
+
+
+    /// <summary>
+    /// 程序进入的时候
+    /// </summary>
     public override void OnEnter()
     {
         getFriendListRequest.SendRequest(facade.GetUserID());
