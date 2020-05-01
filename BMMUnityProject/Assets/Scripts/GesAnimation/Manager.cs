@@ -214,7 +214,8 @@ public class Manager : MonoBehaviour
         //string str = File.ReadAllText(path, System.Text.Encoding.Default);
         dictGes = new Dictionary<string, string>();
 
-        TextAsset ta = Resources.Load<TextAsset>("GestureKeys");
+        TextAsset ta = Resources.Load<TextAsset>("Jsons/GestureKeys");
+
         //Debug.Log(ta);
         AniGestureJson jsonObject = JsonUtility.FromJson<AniGestureJson>(ta.text);
 
