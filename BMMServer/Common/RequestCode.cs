@@ -24,7 +24,7 @@
         ShowNotification,
 
         SendApplyNotice,
-
+        SetInfo
 
     }
 }

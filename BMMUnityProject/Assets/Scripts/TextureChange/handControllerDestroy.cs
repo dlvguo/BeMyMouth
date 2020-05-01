@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class handControllerDestroy : MonoBehaviour
 {
 
-    private bool  IsNull=true;
+    private bool IsNull = true;
     public GameObject qingKong;
     public GameObject allSend;
 
-    private Text  kuSelf;
-    private Text  kuSystem;
+    private Text kuSelf;
+    private Text kuSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -31,15 +31,16 @@ public class handControllerDestroy : MonoBehaviour
 
     public void OnSendClick()
     {
+
         if (IsNull)
             return;
-        if (CreateText.instance.texts == null)
+        if (CreateText.instance != null && CreateText.instance.texts == null)
             return;
         TextCrete.instance.Width = 0;
         TextCrete.instance.Height = 0;
         foreach (var item in TextCrete.instance.texts)
         {
-           //2  2 TextCrete.instance.texts.Remove(item);
+            //2  2 TextCrete.instance.texts.Remove(item);
             Destroy(item.gameObject);
         }
 

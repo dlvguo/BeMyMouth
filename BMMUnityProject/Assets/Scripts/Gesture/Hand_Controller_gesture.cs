@@ -5,7 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// 手势运行
+/// </summary>
 public class Hand_Controller_gesture : MonoBehaviour
 {
 
@@ -89,7 +91,7 @@ public class Hand_Controller_gesture : MonoBehaviour
     // Update is called once per frame	
     void Update()
     {
-         mFrame = mProvider.CurrentFrame;//获取当前帧
+        mFrame = mProvider.CurrentFrame;//获取当前帧
                                         //获得手的个数		
                                         //print ("hand num are " + mFrame.Hands.Count); 
         if (mFrame.Hands.Count > 0)
@@ -151,7 +153,7 @@ public class Hand_Controller_gesture : MonoBehaviour
             fingerDis[2] = (listOfFingers[2].TipPosition - hand.PalmPosition).Magnitude;
             fingerDis[3] = (listOfFingers[3].TipPosition - hand.PalmPosition).Magnitude;
             fingerDis[4] = (listOfFingers[4].TipPosition - hand.PalmPosition).Magnitude;
-            angle[0] = listOfFingers[0].TipPosition.Magnitude ;
+            angle[0] = listOfFingers[0].TipPosition.Magnitude;
             angle[1] = listOfFingers[1].TipPosition.Magnitude;
             angle[2] = listOfFingers[2].TipPosition.Magnitude;
             angle[3] = listOfFingers[3].TipPosition.Magnitude;
@@ -174,7 +176,7 @@ public class Hand_Controller_gesture : MonoBehaviour
                 Finger finger = listOfFingers[f];
                 //Debug.Log(listOfFingers.Count);
                 //fingerDis[f] =(finger.TipPosition - hand.PalmPosition).Magnitude;
-               // Debug.Log((finger.TipPosition - hand.PalmPosition).Magnitude);
+                // Debug.Log((finger.TipPosition - hand.PalmPosition).Magnitude);
                 if ((finger.TipPosition - hand.PalmPosition).Magnitude > deltaCloseFinger)    // Magnitude  向量的长度 。是(x*x+y*y+z*z)的平方根。                                                                                                //float deltaCloseFinger = 0.05f;
                 {
                     count++;

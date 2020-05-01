@@ -54,14 +54,14 @@ public class UIManager : BaseManager
 
     private Transform canvasTransform;
 
-
+    //初始化
     public override void OnInit()
     {
         base.OnInit();
         PushPanel(UIPanelType.LoginPanel);
     }
 
-
+    //获取画布坐标
     private Transform CanvasTransform
     {
         get
@@ -70,7 +70,6 @@ public class UIManager : BaseManager
             {
                 canvasTransform = GameObject.Find("Canvas").transform;
             }
-
             return canvasTransform;
         }
     }

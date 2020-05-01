@@ -8,7 +8,6 @@ namespace BMMServer.Services
 {
     public class ChatCtrlService : BaseCtrlService
     {
-
         public ChatCtrlService()
         {
             controllerCode = ControllerCode.Chat;
@@ -20,7 +19,7 @@ namespace BMMServer.Services
 
             string[] strs = data.Split(',');
             int id = int.Parse(strs[1]);
-            // TODO
+            // TODO 保存聊天记录
             //chatDAO.SaveMessage(client.MySQLconn, strs[0], client.ClientUserId, id, DateTime.Now);
             Client targetClient = server.GetOnlineClientById(id);
             {
@@ -30,12 +29,6 @@ namespace BMMServer.Services
                     client.BroadcastMessage(targetClient, RequestCode.SendMessage, broadcastData);
                 }
             }
-            //if (targetClient == null)
-            //{
-            //    //TODO 
-            //}
-            //string message = strs[0] + ',' + client.ClientUserId.ToString();
-            //client.BroadcastMessage(targetClient, RequestCode.ReciveChatMessage, message);
             return null;
         }
     }

@@ -3,7 +3,8 @@ using System.Collections;
 using System;
 
 
-public enum UIPanelType  {
+public enum UIPanelType
+{
     None,
     LoginPanel,
     RegPanel,
@@ -13,5 +14,6 @@ public enum UIPanelType  {
     ChatPanel,
     DisplayPanel,
     AnChatPanel,
-    SearchFriendPanel
+    SearchFriendPanel,
+    SetInfoPanel
 }

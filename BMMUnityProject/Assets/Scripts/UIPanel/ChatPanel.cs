@@ -33,7 +33,7 @@ public class ChatPanel : BasePanel
     //更改类型
     public ChangeTypeButton ctButton;
 
-    public GameObject LeapController;
+    public GameObject leapController;
 #if UNITY_STANDALONE_WIN  //手语需要
 
     public GameObject qingKong;
@@ -45,7 +45,7 @@ public class ChatPanel : BasePanel
     private Transform mainCameraTransform;
     private Canvas canvas;
 
-    public GameObject LeapMotionController;
+    public GameObject leapMotionController;
 
     private Text kuSelf;
     private Text kuSystem;
@@ -157,6 +157,7 @@ public class ChatPanel : BasePanel
 
     }
 
+    //发送消息
     private void OnSendButtonClick()
     {
         if (string.IsNullOrEmpty(msIF.text) || NowChatId == 0)
@@ -180,7 +181,6 @@ public class ChatPanel : BasePanel
         {
             insChatFrItemDatas.Add(message);
         }
-
         isTimeToInsChatFrItem = true;
     }
 
@@ -264,27 +264,28 @@ public class ChatPanel : BasePanel
     {
         message.SetActive(true);
         Invoke("MesDestroy", 1);
-        if (LeapMotionController)
+        if (leapMotionController)
             return;
         qingKong.SetActive(true);
         allSend.SetActive(true);
-        LeapMotionController = Instantiate(LeapController);
-        Transform tran = LeapMotionController.transform;
-        LeapMotionController.transform.SetParent(mainCameraTransform);
-        LeapMotionController.transform.localPosition = tran.position;
+        leapMotionController = Instantiate(leapController);
+        Transform tran = leapMotionController.transform;
+        leapMotionController.transform.SetParent(mainCameraTransform);
+        leapMotionController.transform.localPosition = tran.position;
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         kuSelf.text = "使用自制手势库";
         kuSystem.text = "使用默认手势库";
     }
 
+    //清空
     public void OnCleanClick()
     {
         qingKong.SetActive(true);
         allSend.SetActive(true);
-        LeapMotionController = Instantiate(LeapController);
-        Transform tran = LeapMotionController.transform;
-        LeapMotionController.transform.SetParent(mainCameraTransform);
-        LeapMotionController.transform.localPosition = tran.position;
+        leapMotionController = Instantiate(leapController);
+        Transform tran = leapMotionController.transform;
+        leapMotionController.transform.SetParent(mainCameraTransform);
+        leapMotionController.transform.localPosition = tran.position;
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
     }
 

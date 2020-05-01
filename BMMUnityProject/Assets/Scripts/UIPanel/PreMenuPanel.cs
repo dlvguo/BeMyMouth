@@ -22,6 +22,7 @@ public class PreMenuPanel : BasePanel
         string data = id.ToString() + ',' + nicknameIF.text;
         setFirstLoginInformationRequest.SendRequest(data);
         facade.SetNickName(nicknameIF.text);
+        
     }
 
     public void OnSetFirstLoginInformationResponse(ReturnCode returnCode)

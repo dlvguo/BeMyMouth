@@ -9,20 +9,20 @@ namespace BMMServer.Services
 {
     public class ServiceManger
     {
-        private Dictionary<ControllerCode, BaseCtrlService> controllerDict = new Dictionary<ControllerCode, BaseCtrlService>();
+        private Dictionary<ControllerCode, BaseCtrlService> serviceDict = new Dictionary<ControllerCode, BaseCtrlService>();
         private Server server;
 
         public ServiceManger(Server server)
         {
             this.server = server;
-            InitController();
+            InitService();
         }
 
-        private void InitController()
+        //初始化Service
+        private void InitService()
         {
-
-            controllerDict.Add(ControllerCode.User, new UserCtrlService());
-            controllerDict.Add(ControllerCode.Chat, new ChatCtrlService());
+            serviceDict.Add(ControllerCode.User, new UserCtrlService());
+            serviceDict.Add(ControllerCode.Chat, new ChatCtrlService());
 
         }
         //处理请求
@@ -30,12 +30,13 @@ namespace BMMServer.Services
         {
             //TODO根据这里添加需求即可
             BaseCtrlService controller;
-            bool isGet = controllerDict.TryGetValue(controllerCode, out controller);
+            bool isGet = serviceDict.TryGetValue(controllerCode, out controller);
             if (!isGet)
             {
                 Console.WriteLine("Cant Get " + requestCode + " Handler");
                 return;
             }
+            //使用反射获取方法
             string methodName = Enum.GetName(typeof(RequestCode), requestCode);
             MethodInfo mi = controller.GetType().GetMethod(methodName);
             if (mi == null)

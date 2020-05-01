@@ -14,14 +14,14 @@ public class SetFirstLoginInformationRequest : BaseRequest
         base.Awake();
     }
 
-    public void SendRequest(string data)
+    public override void SendRequest(string data)
     {
         base.SendRequest(data);
     }
 
     public override void OnResPonse(string data)
     {
-        ReturnCode returnCode = (ReturnCode) int.Parse(data);
+        ReturnCode returnCode = (ReturnCode)int.Parse(data);
         preMenuPanel.OnSetFirstLoginInformationResponse(returnCode);
     }
 }

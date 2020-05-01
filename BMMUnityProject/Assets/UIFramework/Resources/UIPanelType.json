@@ -35,6 +35,10 @@
     {
       "panelTypeString": "SearchFriendPanel",
       "path": "UIPanel/SearchFriendPanel"
+    },
+    {
+      "panelTypeString": "SetInfoPanel",
+      "path": "UIPanel/SetInfoPanel"
     }
   ]
 }

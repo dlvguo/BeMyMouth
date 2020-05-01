@@ -234,6 +234,11 @@ namespace BMMServer.DBS
             return false;
         }
 
+        /// <summary>
+        /// 验证信息是否存在
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public static bool VerifyExist(string username)
         {
             using (BeMyMouthDB db = new BeMyMouthDB())
@@ -281,6 +286,38 @@ namespace BMMServer.DBS
         }
 
         /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static bool ModifyUserInfo(int id, string username, string password)
+        {
+            try
+            {
+                using (BeMyMouthDB db = new BeMyMouthDB())
+                {
+                    var user = db.Users.Where(u => u.Id == id).FirstOrDefault();
+                    if (user != null)
+                    {
+                        if (username != string.Empty)
+                            user.NickName = username;
+                        if (password != string.Empty)
+                            user.Password = password;
+                    }
+                    db.SaveChanges();
+                }
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("创建用户失败");
+                return false;
+            }
+        }
+
+        /// <summary>
         /// 通过ID添加好友
         /// </summary>
         /// <param name="friendId"></param>
@@ -288,7 +325,6 @@ namespace BMMServer.DBS
         /// <returns></returns>
         public static bool AddFriendById(int friendId, int selfId)
         {
-
             try
             {
                 using (BeMyMouthDB db = new BeMyMouthDB())

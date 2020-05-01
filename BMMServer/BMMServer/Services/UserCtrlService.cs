@@ -221,6 +221,37 @@ namespace BMMServer.Services
                 return ((int)ReturnCode.Fail).ToString();
             }
         }
+
+        //设置用户信息
+        public string SetInfo(string data, Client client, Server server)
+        {
+            Console.WriteLine(data);
+            string[] strs = data.Split(',');
+            string userid = strs[0];
+            string username = strs[1];
+            string password = strs[2];
+            try
+            {
+
+                bool isSuccess = ModifyUserInfo(int.Parse(userid), username, password);
+                if (isSuccess)
+                {
+                    return ((int)ReturnCode.Success).ToString();
+                }
+                else
+                {
+                    return ((int)ReturnCode.Fail).ToString();
+                }
+            }
+            catch
+            {
+                return ((int)ReturnCode.Fail).ToString();
+            }
+
+        }
+
+
+
     }
 }
 

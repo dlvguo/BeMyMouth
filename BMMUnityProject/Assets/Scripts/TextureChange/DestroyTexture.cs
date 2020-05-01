@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//删除贴图
 public class DestroyTexture : MonoBehaviour
 {
     private bool IsNull = true;
@@ -22,10 +23,17 @@ public class DestroyTexture : MonoBehaviour
             return;
         TextCrete.instance.Width = 0;
         TextCrete.instance.Height = 0;
-        foreach (var item in TextCrete.instance.texts)
+        try
         {
-           // TextCrete.instance.texts.Remove(item);
-            Destroy(item.gameObject);
+            foreach (var item in TextCrete.instance.texts)
+            {
+                // TextCrete.instance.texts.Remove(item);
+                Destroy(item.gameObject);
+            }
+        }
+        catch
+        {
+
         }
         TextCrete.instance.texts.Clear();
     }

@@ -1,5 +1,5 @@
 ﻿[System.Serializable]
-internal class Gesture
+internal class AniGesture
 {
     public string key;
     public string value;

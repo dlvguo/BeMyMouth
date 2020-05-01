@@ -16,6 +16,7 @@ namespace BMMServer.Services
                 return controllerCode;
             }
         }
+
         public virtual string DefaultHandale(string data, Client client, Server server)
         {
             return null;

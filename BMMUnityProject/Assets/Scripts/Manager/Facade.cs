@@ -80,6 +80,7 @@ public class Facade : MonoBehaviour
         swiMng.OnDestroy();
     }
 
+    //退出
     public void Quit()
     {
         Application.Quit();
@@ -92,7 +93,7 @@ public class Facade : MonoBehaviour
     }
 
     /// <summary>
-    /// 处理回应 TODO 处理回应
+    /// TODO 处理回应
     /// </summary>
     /// <param name="requestCode">请求代码</param>
     /// <param name="data"></param>
@@ -135,6 +136,7 @@ public class Facade : MonoBehaviour
         userMng.SetUserInformation(id, username, nickname, ifl);
     }
 
+    //是否第一次登录
     public bool IsFirstTimeLogin()
     {
         return userMng.IsFirstTimeLogin();
@@ -147,6 +149,12 @@ public class Facade : MonoBehaviour
     public void SetNickName(string nickname)
     {
         userMng.SetNickName(nickname);
+        var mainPanel = uiMng.GetPanel(UIPanelType.MainPanel) as MainPanel;
+        if (mainPanel != null)
+        {
+            mainPanel.SetShowNickName();
+        }
+
     }
 
     /// <summary>
@@ -236,11 +244,13 @@ public class Facade : MonoBehaviour
         (uiMng.GetPanel(UIPanelType.MainPanel) as MainPanel).SyncShowNotification(id);
     }
 
+    //获取请求
     public BaseRequest GetRequest(RequestCode requestCode)
     {
         return requestMng.GetRequest(requestCode);
     }
 
+    //更改请求
     public void ChangeType()
     {
         swiMng.ChangeType();

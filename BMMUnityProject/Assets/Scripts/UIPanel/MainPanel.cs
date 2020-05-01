@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainPanel : BasePanel
 {
-    private Text name;
+    private Text nickName;
     private GetFriendListRequest getFriendListRequest;
 
     [SerializeField] private VerticalLayoutGroup parent;
@@ -21,6 +21,7 @@ public class MainPanel : BasePanel
 
     [SerializeField] private Button sfButton;
     [SerializeField] private Button msgButton;
+    [SerializeField] private Button infoButton;
 
     private List<FriendItem> friendItems = new List<FriendItem>();
     private List<int> notificationsIds = new List<int>();
@@ -39,10 +40,12 @@ public class MainPanel : BasePanel
             print(ids);
             notificationsIds.Add(int.Parse(ids));
         }
-
         isTimeToShowNotifications = true;
     }
 
+    /// <summary>
+    /// 显示消息
+    /// </summary>
     private void ShowNotifications()
     {
         foreach (FriendItem fi in friendItems)
@@ -78,11 +81,13 @@ public class MainPanel : BasePanel
     //初始化面板
     public override void InitPanelThings()
     {
-        name = transform.Find("puser/name").GetComponent<Text>();
-        name.text = facade.GetNickname();
+        nickName = transform.Find("puser/name").GetComponent<Text>();
+        nickName.text = facade.GetNickname();
         getFriendListRequest = GetComponent<GetFriendListRequest>();
         msgButton = transform.Find("msgButton").GetComponent<Button>();
         msgButton.onClick.AddListener(() => { uiMng.PushPanel(UIPanelType.ChatPanel); });
+        infoButton = transform.Find("InfoSetButton").GetComponent<Button>();
+        infoButton.onClick.AddListener(() => uiMng.PushPanel(UIPanelType.SetInfoPanel));
         sfButton.onClick.AddListener(() => { uiMng.PushPanel(UIPanelType.SearchFriendPanel); });
         transform.Find("quitButton").GetComponent<Button>().onClick.AddListener(() =>
         {
@@ -96,6 +101,12 @@ public class MainPanel : BasePanel
                 uiMng.PopPanel();
             }
         });
+    }
+    private bool isInsName = false;
+    //注意更新必须在Update中 不然刷新不上去
+    public void SetShowNickName()
+    {
+        isInsName = true;
     }
 
     /// <summary>
@@ -170,6 +181,13 @@ public class MainPanel : BasePanel
             syncNickName = string.Empty;
             syncId = string.Empty;
         }
+
+        //更新下
+        if (isInsName)
+        {
+            nickName.text = facade.GetNickname();
+            isInsName = false;
+        }
     }
     public void UpdateLineDot()
     {
@@ -189,7 +207,7 @@ public class MainPanel : BasePanel
             GameObject g = Instantiate(frItem);
             g.transform.SetParent(parent.transform);
             g.transform.localScale = new Vector3(1f, 1f, 1f);
-#if UNITY_ANDROID||UNITY_STANDALONE_WIN||UNITY_EDITOR
+#if UNITY_ANDROID || UNITY_STANDALONE_WIN || UNITY_EDITOR
             content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 150);
 #endif
 #if MAYBENO
@@ -208,7 +226,7 @@ public class MainPanel : BasePanel
     //更新名称
     public void InsNickName()
     {
-        name.text = facade.GetNickname();
+        nickName.text = facade.GetNickname();
     }
 
 

@@ -66,13 +66,13 @@ MonoBehaviour:
   content: {fileID: 2068104972969385235}
   chatScrollBar: {fileID: 7205065450732884766}
   parent: {fileID: 4648663102380729641}
-  ctButton: {fileID: 0}
-  LeapController: {fileID: 8457168241696841453, guid: 2ee4c3f62e6d2ca4b9af87ca841aa7b0,
+  ctButton: {fileID: 8006399352392707914}
+  leapController: {fileID: 8457168241696841453, guid: 2ee4c3f62e6d2ca4b9af87ca841aa7b0,
     type: 3}
   qingKong: {fileID: 6364659041041798891}
   allSend: {fileID: 5105466278588643571}
   message: {fileID: 310380684636493768}
-  LeapMotionController: {fileID: 0}
+  leapMotionController: {fileID: 0}
 --- !u!114 &7649373471460722898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u73B0\u5728\u53EF\u4EE5\u4F7F\u7528leap motion\u8BBE\u5907\u8FDB\u884C\u624B\u8BED\u8BC6\u522B\u4E86"
+  m_Text: "\u73B0\u5728\u53EF\u4EE5\u4F7F\u7528leap motion\u8BBE\u5907\u8FDB\u884C\u624B\u8BED\u8BC6\u522B"
 --- !u!1 &647395657518264314
 GameObject:
   m_ObjectHideFlags: 0

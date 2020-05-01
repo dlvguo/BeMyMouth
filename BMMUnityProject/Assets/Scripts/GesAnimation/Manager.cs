@@ -8,16 +8,19 @@ using Newtonsoft.Json;
 public class Manager : MonoBehaviour
 {
 
+    //动画执行
     private Animator animator;
 
     private GameObject iteator;
 
     public GameObject[] Touchs;
 
-    private const string _path = "/GestureKeys.json";
-    private const string _path1 = "Prefabs/";
+    private const string gesKeysPath = "/Jsons/GestureKeys.json";
+    private const string prefabsPath = "Prefabs/";
+
     private bool isPlay = false;
-    public bool IsPlay { get { return isPlay; } }
+    //是否运行
+    public bool IsPlay => isPlay;
 
     public Dictionary<string, string> dictGes;
     public Queue<GameObject> queue;
@@ -55,7 +58,7 @@ public class Manager : MonoBehaviour
 
 
     /// <summary>
-    /// 队列处理
+    /// 处理队列
     /// </summary>
     /// <param name="strs"></param>
     public void ProcessQueue(char[] strs)
@@ -109,7 +112,7 @@ public class Manager : MonoBehaviour
     /// <param name="str"></param>
     public void EnQueue(string str)
     {
-        GameObject game = Resources.Load(_path1 + str) as GameObject;
+        GameObject game = Resources.Load(prefabsPath + str) as GameObject;
         queue.Enqueue(game);
     }
 
@@ -126,7 +129,7 @@ public class Manager : MonoBehaviour
     Animator[] animators = new Animator[20];
 
     /// <summary>
-    /// 多线程进行协程
+    /// 播放动画协程
     /// </summary>
     /// <returns></returns>
     IEnumerator PlayAnni()
@@ -169,7 +172,7 @@ public class Manager : MonoBehaviour
             }
             else
             {
-                JudgeAnimator(games[j], animators[j], j);
+                JudgeAnimatorOver(games[j], animators[j], j);
 
             }
             yield return null;
@@ -182,7 +185,7 @@ public class Manager : MonoBehaviour
     /// 判断动画是否完毕
     /// </summary>
     /// <returns></returns>
-    public void JudgeAnimator(GameObject iteator, Animator animator, int j)
+    public void JudgeAnimatorOver(GameObject iteator, Animator animator, int j)
     {
         var info = animator.GetCurrentAnimatorStateInfo(0);
         if (info.normalizedTime > 0.5f)
@@ -198,9 +201,9 @@ public class Manager : MonoBehaviour
     }
 
     [System.Serializable]
-    class GestureJson
+    class AniGestureJson
     {
-        public List<Gesture> infoList;
+        public List<AniGesture> infoList;
     }
     /// <summary>
     /// 读取Json文件
@@ -213,7 +216,7 @@ public class Manager : MonoBehaviour
 
         TextAsset ta = Resources.Load<TextAsset>("GestureKeys");
         //Debug.Log(ta);
-        GestureJson jsonObject = JsonUtility.FromJson<GestureJson>(ta.text);
+        AniGestureJson jsonObject = JsonUtility.FromJson<AniGestureJson>(ta.text);
 
         //List<Gesture> list = JsonConvert.DeserializeObject<List<Gesture>>(str);
         foreach (var i in jsonObject.infoList)
