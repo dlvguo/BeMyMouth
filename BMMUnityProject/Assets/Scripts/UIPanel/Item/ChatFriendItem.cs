@@ -41,6 +41,8 @@ public class ChatFriendItem : BaseItem
             backButton = voiceButton;
         }
     }
+
+    //添加按钮
     private void ButtonAdptation()
     {
         float iFSizeX;

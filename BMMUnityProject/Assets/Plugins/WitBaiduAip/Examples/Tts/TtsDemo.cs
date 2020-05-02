@@ -1,13 +1,10 @@
-﻿/*
- * 作者：关尔
- * 时间：2018年1月11日
- * 关注“洪流学堂”公众号，让你快人几步
- */
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Wit.BaiduAip.Speech;
 
+/// <summary>
+/// 语音合成
+/// </summary>
 public class TtsDemo : MonoBehaviour
 {
     public string APIKey = "";
@@ -31,6 +28,8 @@ public class TtsDemo : MonoBehaviour
 
         SynthesisButton.onClick.AddListener(OnClickSynthesisButton);
     }
+
+    //添加
     private void OnClickSynthesisButton()
     {
         SynthesisButton.gameObject.SetActive(false);
@@ -49,7 +48,7 @@ public class TtsDemo : MonoBehaviour
             else
             {
                 DescriptionText.text = s.err_msg;
-				SynthesisButton.gameObject.SetActive(true);
+                SynthesisButton.gameObject.SetActive(true);
             }
         }));
     }

@@ -1,13 +1,10 @@
-﻿/*
- * 作者：关尔
- * 时间：2017年12月1日
- * 关注“洪流学堂”公众号，让你快人几步
- */
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Wit.BaiduAip.Speech;
 
+/// <summary>
+/// 语音识别
+/// </summary>
 public class AsrDemo : MonoBehaviour
 {
     public string APIKey = "";
@@ -22,7 +19,6 @@ public class AsrDemo : MonoBehaviour
     private AudioClip _clipRecord;
     private Asr _asr;
 
-    // Microphone is not supported in Webgl
 #if !UNITY_WEBGL
 
     void Start()

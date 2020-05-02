@@ -48,6 +48,7 @@ namespace Wit.BaiduAip.Speech
         {
         }
 
+        //合成协程
         public IEnumerator Synthesis(string text, Action<TtsResponse> callback, int speed = 5, int pit = 5, int vol = 5,
             Pronouncer per = Pronouncer.Female)
         {
