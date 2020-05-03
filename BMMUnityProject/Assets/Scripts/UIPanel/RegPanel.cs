@@ -4,21 +4,18 @@ using Common;
 using UnityEngine;
 using UnityEngine.UI;
 
+//注册面板
 public class RegPanel : BasePanel
 {
     private InputField mailIF;
     private InputField codeIF;
     private InputField passwordIF;
     private InputField rePasswordIF;
-
     private Button sendCodeBtn;
     private Button regBtn;
     private Button cancelBtn;
-
     private string syncShowText;
-
     private Mail mail;
-
     private RegisterRequest registerRequest;
     private VerifyRepeatRequest verifyRepeatRequest;
 

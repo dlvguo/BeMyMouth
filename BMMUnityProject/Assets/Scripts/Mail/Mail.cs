@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using System.Net.Mail;
 using System.Net;
 using System;
+
+//邮箱验证码发送
 public class Mail : MonoBehaviour
 {
     public void SendMail(string mailAddress, int guardCode)

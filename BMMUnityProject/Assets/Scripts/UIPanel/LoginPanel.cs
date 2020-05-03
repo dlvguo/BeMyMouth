@@ -5,15 +5,16 @@ using UnityEngine;
 using Common;
 using UnityEngine.UI;
 
+//登录面板
 public class LoginPanel : BasePanel
 {
+    //账号输入框
     private InputField usernameIF;
+    //密码输入框
     private InputField passwordIF;
+    //注册请求
     private LoginRequest loginRequest;
-
-
     private string syncShowText = "";
-
 
     private void Update()
     {
@@ -23,10 +24,9 @@ public class LoginPanel : BasePanel
             syncShowText = "";
         }
     }
-
+    //初始化面板
     public override void InitPanelThings()
     {
-        //        transform.Find("BackButton").GetComponent<Button>().onClick.AddListener(OnBackButtonClick);
         transform.Find("LoginButton").GetComponent<Button>().onClick.AddListener(OnLoginButtonClick);
         transform.Find("createButton").GetComponent<Button>().onClick
             .AddListener(() => { uiMng.PushPanel(UIPanelType.RegPanel); });
@@ -39,7 +39,7 @@ public class LoginPanel : BasePanel
         base.InitPanelThings();
     }
 
-
+    //按钮点击事件
     private void OnLoginButtonClick()
     {
         string msg = "";
@@ -64,6 +64,7 @@ public class LoginPanel : BasePanel
         loginRequest.SendRequest(usernameIF.text, passwordIF.text);
     }
 
+    //注册反馈
     public void OnLoginResponse(ReturnCode returntCode, string nickname)
     {
         if (returntCode == ReturnCode.Success)
