@@ -244,6 +244,12 @@ public class Facade : MonoBehaviour
         (uiMng.GetPanel(UIPanelType.MainPanel) as MainPanel).SyncShowNotification(id);
     }
 
+    //删除栈顶面板
+    public void PopUIPanel()
+    {
+        uiMng.PopPanel();
+    }
+
     //获取请求
     public BaseRequest GetRequest(RequestCode requestCode)
     {
