@@ -82,6 +82,12 @@ public class LeapGesturesRecoder : MonoBehaviour
                 //手势识别
                 RecognizeTest(GetLeapController().Frame());
             }
+            ////无暂停
+            //if (!pause && recode)
+            //{
+            //    RecodeGes(GetLeapController().Frame());
+            //}
+
         }
     }
 

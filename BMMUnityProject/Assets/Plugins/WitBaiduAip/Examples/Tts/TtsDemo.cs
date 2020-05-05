@@ -5,7 +5,7 @@ using Wit.BaiduAip.Speech;
 /// <summary>
 /// 语音合成
 /// </summary>
-public class Tts : MonoBehaviour
+public class TtsDemo : MonoBehaviour
 {
     public string APIKey = "";
     public string SecretKey = "";
@@ -13,13 +13,13 @@ public class Tts : MonoBehaviour
     public InputField Input;
     public Text DescriptionText;
 
-    private Wit.BaiduAip.Speech.Tts _asr;
+    private Tts _asr;
     private AudioSource _audioSource;
     private bool _startPlaying;
 
     void Start()
     {
-        _asr = new Wit.BaiduAip.Speech.Tts(APIKey, SecretKey);
+        _asr = new Tts(APIKey, SecretKey);
         StartCoroutine(_asr.GetAccessToken());
 
         _audioSource = gameObject.AddComponent<AudioSource>();
