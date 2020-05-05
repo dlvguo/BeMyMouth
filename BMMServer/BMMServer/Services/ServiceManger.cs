@@ -29,8 +29,8 @@ namespace BMMServer.Services
         public void HandleRequest(ControllerCode controllerCode, RequestCode requestCode, string data, Client client)
         {
             //TODO根据这里添加需求即可
-            BaseCtrlService controller;
-            bool isGet = serviceDict.TryGetValue(controllerCode, out controller);
+            BaseCtrlService service;
+            bool isGet = serviceDict.TryGetValue(controllerCode, out service);
             if (!isGet)
             {
                 Console.WriteLine("Cant Get " + requestCode + " Handler");
@@ -38,14 +38,14 @@ namespace BMMServer.Services
             }
             //使用反射获取方法
             string methodName = Enum.GetName(typeof(RequestCode), requestCode);
-            MethodInfo mi = controller.GetType().GetMethod(methodName);
+            MethodInfo mi = service.GetType().GetMethod(methodName);
             if (mi == null)
             {
-                Console.WriteLine("[warning]no method:<" + controller.GetType() + "." + methodName + ">");
+                Console.WriteLine("[warning]no method:<" + service.GetType() + "." + methodName + ">");
             }
             Console.WriteLine(data);
             object[] parameters = new object[] { data, client, server };
-            object o = mi.Invoke(controller, parameters);
+            object o = mi.Invoke(service, parameters);
             if (o == null || string.IsNullOrEmpty(o as string))
             {
                 return;
