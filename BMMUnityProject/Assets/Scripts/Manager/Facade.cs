@@ -16,7 +16,6 @@ public class Facade : MonoBehaviour
     private ClientManager clientMng;
     private UserManager userMng;
     private MessagesManager mesMng;
-    private SwitchManager swiMng;
     public static Facade Instance
     {
         get { return _instance; }
@@ -54,7 +53,6 @@ public class Facade : MonoBehaviour
         clientMng = new ClientManager(this);
         userMng = new UserManager(this);
         mesMng = new MessagesManager(this);
-        swiMng = new SwitchManager(this);
         uiMng.OnInit();
         requestMng.OnInit();
         clientMng.OnInit();
@@ -67,7 +65,6 @@ public class Facade : MonoBehaviour
         clientMng.Update();
         userMng.Update();
         mesMng.Update();
-        swiMng.Update();
     }
 
     private void DestroyManager()
@@ -77,7 +74,6 @@ public class Facade : MonoBehaviour
         clientMng.OnDestroy();
         userMng.OnDestroy();
         mesMng.OnDestroy();
-        swiMng.OnDestroy();
     }
 
     //退出
@@ -256,14 +252,4 @@ public class Facade : MonoBehaviour
         return requestMng.GetRequest(requestCode);
     }
 
-    //更改请求
-    public void ChangeType()
-    {
-        swiMng.ChangeType();
-    }
-
-    public SwitchManager.UserType GetUserType()
-    {
-        return swiMng.GetUserType();
-    }
 }

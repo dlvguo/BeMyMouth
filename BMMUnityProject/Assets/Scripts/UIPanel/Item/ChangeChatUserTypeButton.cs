@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeTypeButton : BaseItem
+public enum UserType
+{
+    Normal,
+    Deaf
+}
+
+//更改聊天窗口
+public class ChangeChatUserTypeButton : BaseItem
 {
     public Text buttonText;
     public ChatPanel cPanel;
@@ -24,13 +31,14 @@ public class ChangeTypeButton : BaseItem
 
     public void ChangeType()
     {
-        cPanel.ChangeType();
+        cPanel.ChangeChatUserType();
         buttonText.text = cPanel.GetUserType().ToString();
     }
 
-    public void ChangeButton(SwitchManager.UserType ut)
+    //改变类型事件
+    public void OnUserTypeChange(UserType ut)
     {
-        if (ut == SwitchManager.UserType.Deaf)
+        if (ut == UserType.Deaf)
         {
             voiceButoon.gameObject.SetActive(false);
             handButoon.gameObject.SetActive(true);

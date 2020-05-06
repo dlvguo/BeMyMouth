@@ -17,16 +17,16 @@ public class ChatFriendItem : BaseItem
     {
         cPanel = GetComponentInParent<ChatPanel>();
     }
-    public void Structure(string message, UIManager uiMng, Facade facade, SwitchManager.UserType ut)
+    public void Structure(string message, UIManager uiMng, Facade facade, UserType ut)
     {
         ChangeButton(ut);
         ShowMessage(message);
         UIMng = uiMng;
         Facade = facade;
     }
-    public void ChangeButton(SwitchManager.UserType ut)
+    public void ChangeButton(UserType ut)
     {
-        if (ut == SwitchManager.UserType.Normal)
+        if (ut == UserType.Normal)
         {
             handButton.gameObject.SetActive(false);
             voiceButton.gameObject.SetActive(true);

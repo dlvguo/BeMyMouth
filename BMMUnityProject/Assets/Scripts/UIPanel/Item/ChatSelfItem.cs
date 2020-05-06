@@ -16,7 +16,7 @@ public class ChatSelfItem : BaseItem
     private ChatPanel cPanel;
 
 
-    public void Structure(string message, UIManager uiMng, Facade facade, SwitchManager.UserType ut)
+    public void Structure(string message, UIManager uiMng, Facade facade, UserType ut)
     {
         ChangeButton(ut);
         ShowMessage(message);
@@ -24,9 +24,9 @@ public class ChatSelfItem : BaseItem
         Facade = facade;
     }
 
-    public void ChangeButton(SwitchManager.UserType ut)
+    public void ChangeButton(UserType ut)
     {
-        if (ut == SwitchManager.UserType.Normal)
+        if (ut == UserType.Normal)
         {
             if (handButton || voiceButton)
             {

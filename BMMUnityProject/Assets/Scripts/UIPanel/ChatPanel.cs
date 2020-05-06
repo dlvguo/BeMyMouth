@@ -31,7 +31,7 @@ public class ChatPanel : BasePanel
     //滑动条
     public VerticalLayoutGroup parent;
     //更改类型
-    public ChangeTypeButton ctButton;
+    public ChangeChatUserTypeButton ctButton;
 
     public GameObject leapController;
 #if UNITY_STANDALONE_WIN  //手语需要
@@ -49,6 +49,7 @@ public class ChatPanel : BasePanel
 
     private Text kuSelf;
     private Text kuSystem;
+    private UserType userType;
 
     private void Awake()
     {
@@ -56,7 +57,7 @@ public class ChatPanel : BasePanel
         mainCameraTransform = GameObject.Find("Main Camera").transform;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         //chatScrollBar.onValueChanged.AddListener((v) => StartCoroutine("InsSrollBar"));
-
+        userType = UserType.Normal;
 #if UNITY_STANDALONE_WIN||DEBUG
         kuSelf = GameObject.FindWithTag("kuSelf").GetComponent<Text>();
         kuSystem = GameObject.FindWithTag("kuSystem").GetComponent<Text>();
@@ -79,16 +80,6 @@ public class ChatPanel : BasePanel
     {
         gameObject.SetActive(true);
     }
-    //
-    //    public override void OnPause()
-    //    {
-    //        gameObject.SetActive(false);
-    //    }
-    //
-    //    public override void OnResume()
-    //    {
-    //        gameObject.SetActive(true);
-    //    }
 
     public UIManager GetUiMng()
     {
@@ -135,8 +126,8 @@ public class ChatPanel : BasePanel
     {
         //添加返回按钮
         transform.Find("frName/back").GetComponent<Button>().onClick.AddListener(() => { uiMng.PopPanel(); });
-        ctButton = transform.Find("ms/cb").GetComponent<ChangeTypeButton>();
-        ctButton.GetComponent<Button>().onClick.AddListener(ChangeType);
+        ctButton = transform.Find("ms/changeUserTypeBtn").GetComponent<ChangeChatUserTypeButton>();
+        ctButton.GetComponent<Button>().onClick.AddListener(ChangeChatUserType);
         frName = transform.Find("frName/Text").GetComponent<Text>();
         msIF = transform.Find("ms/msIF").GetComponent<InputField>();
         transform.Find("ms/sendBtn").GetComponent<Button>().onClick.AddListener(OnSendButtonClick);
@@ -145,6 +136,7 @@ public class ChatPanel : BasePanel
         base.InitPanelThings();
     }
 
+    //设置朋友名称
     public void SetFrName(string name)
     {
         frName.text = name;
@@ -192,17 +184,25 @@ public class ChatPanel : BasePanel
         syncInsFrChatItemMessage = message;
     }
 
-    public void ChangeType()
+    //改变聊天用户模式
+    public void ChangeChatUserType()
     {
-        facade.ChangeType();
-        ctButton.ChangeButton(facade.GetUserType());
-        ChangeChatButtonType(facade.GetUserType());
+        if (userType == UserType.Normal)
+        {
+            userType = UserType.Deaf;
+        }
+        else
+        {
+            userType = UserType.Normal;
+        }
+        ctButton.OnUserTypeChange(userType);
+        ChangeChatItemsButtonType(userType);
     }
 
 
-    public SwitchManager.UserType GetUserType()
+    public UserType GetUserType()
     {
-        return facade.GetUserType();
+        return userType;
     }
 
     public void Display()
@@ -216,7 +216,7 @@ public class ChatPanel : BasePanel
         g.transform.SetParent(parent.transform);
         g.transform.localScale = new Vector3(1f, 1f, 1f);
         content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 170);
-        g.GetComponent<ChatFriendItem>().Structure(message, uiMng, facade, facade.GetUserType());
+        g.GetComponent<ChatFriendItem>().Structure(message, uiMng, facade, userType);
         chatFrItems.Add(g.GetComponent<ChatFriendItem>());
         StartCoroutine("InsSrollBar");
     }
@@ -229,13 +229,13 @@ public class ChatPanel : BasePanel
         g.transform.localScale = new Vector3(1f, 1f, 1f);
         content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 170);
 
-        g.GetComponent<ChatSelfItem>().Structure(message, uiMng, facade, facade.GetUserType());
+        g.GetComponent<ChatSelfItem>().Structure(message, uiMng, facade, userType);
         chatSelfItems.Add(g.GetComponent<ChatSelfItem>());
         StartCoroutine("InsSrollBar");
     }
 
     //更改Button模式
-    public void ChangeChatButtonType(SwitchManager.UserType ut)
+    public void ChangeChatItemsButtonType(UserType ut)
     {
         foreach (var sitem in chatSelfItems)
         {
@@ -268,6 +268,7 @@ public class ChatPanel : BasePanel
             return;
         qingKong.SetActive(true);
         allSend.SetActive(true);
+        //TODO这里更改
         leapMotionController = Instantiate(leapController);
         Transform tran = leapMotionController.transform;
         leapMotionController.transform.SetParent(mainCameraTransform);

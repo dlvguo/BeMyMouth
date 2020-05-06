@@ -7595,6 +7595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7a25b1873509d4c9284e1e8434f1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gestureInputField: {fileID: 0}
+  tipBtu: {fileID: 0}
 --- !u!1 &1306264136719496829
 GameObject:
   m_ObjectHideFlags: 0

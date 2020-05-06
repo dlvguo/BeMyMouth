@@ -38,7 +38,7 @@ public class AsrDemo : MonoBehaviour
     {
         StartButton.gameObject.SetActive(false);
         StopButton.gameObject.SetActive(true);
-        DescriptionText.text = "Listening...";
+        DescriptionText.text = "录音中...";
 
         _clipRecord = Microphone.Start(null, false, 30, 16000);
     }
@@ -47,7 +47,7 @@ public class AsrDemo : MonoBehaviour
     {
         StartButton.gameObject.SetActive(false);
         StopButton.gameObject.SetActive(false);
-        DescriptionText.text = "Recognizing...";
+        DescriptionText.text = "语音识别中...";
         Microphone.End(null);
         Debug.Log("[WitBaiduAip demo]end record");
         var data = Asr.ConvertAudioClipToPCM16(_clipRecord);
@@ -60,7 +60,7 @@ public class AsrDemo : MonoBehaviour
             }
             else
             {
-                DescriptionText.text = "";//TODO 判断语音是否识别成功 不知道为什么有bug
+                DescriptionText.text = "";//TODO 判断语音是否识别成功 不知道为什么有bug 应该是有异步的实现吧
             }
 
             StartButton.gameObject.SetActive(true);
