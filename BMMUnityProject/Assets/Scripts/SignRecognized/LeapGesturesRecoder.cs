@@ -119,7 +119,7 @@ public class LeapGesturesRecoder : MonoBehaviour
         if (leapGestureEntities.Count != 0)
         {
             //var str = FileUtil.ReadFile(Environment.CurrentDirectory + "/Datas/GestureDatas/", "test", FileUtil.FileType.Json);
-            var entity = LeapRecognizeUtil.FigureAverage(leapGestureEntities);
+            var entity = LeapRecognizeUtil.FigureAverageGesEntity(leapGestureEntities);
             Debug.Log("LastGes");
             ConsoleLeapInfo(entity);
             LeapRecognizeUtil.LeapGestureSerialize(entity, gestureInputField.text);

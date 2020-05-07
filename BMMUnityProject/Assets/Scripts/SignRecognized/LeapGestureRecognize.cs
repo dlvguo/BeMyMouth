@@ -1,21 +1,72 @@
-﻿using System.Collections;
+﻿using Leap;
+using Leap.Unity;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LeapGestureRecognize : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //获取LeapMotion相关信息
+    private LeapServiceProvider serviceProvider;
 
+    //记录最后一帧的手势
+    private long lastFrameId = 0;
+    //上一帧手势实体
+    private LeapGestureEntity lastLeapGesEntity;
+    private event Action<string> OnRecognized;
+
+    //手语分类器
     LeapGestureClassifier gestureClassifier;
 
-    void Start()
+    private void Start()
     {
+        serviceProvider = this.GetComponent<LeapServiceProvider>();
         gestureClassifier = LeapGestureClassifier.GetInstance;
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        //Leap连接才可以
+        if (GetLeapController().IsConnected)
+        {
+            //手势识别
+            var frame = GetLeapController().Frame();
+            if (FilterGes(frame))
+                RecognizeGes(frame);
 
+        }
+    }
+
+    private bool FilterGes(Frame frame)
+    {
+        if (frame.Hands.Count == 0 || frame.Id == lastFrameId)
+            return false;
+        return true;
+    }
+
+    private void RecognizeGes(Frame frame)
+    {
+        var entity = LeapRecognizeUtil.BuildLeapGestureEntity(frame);
+        lastLeapGesEntity = entity;
+        var str = gestureClassifier.GesRecognized(entity);
+        //触发事件
+        OnRecognized.Invoke(str);
+    }
+
+
+    //获取LeapCtrl
+    private Controller GetLeapController()
+    {
+        return serviceProvider.GetLeapController();
+    }
+
+    public void AddListener(Action<string> action)
+    {
+        Debug.Log("添加手势识别事件成功");
+        OnRecognized += action;
     }
 }

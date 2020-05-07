@@ -70,8 +70,12 @@ public class LeapRecognizeUtil
     }
 
 
-
-    public static LeapGestureEntity FigureAverage(List<LeapGestureEntity> leapGestureEntities)
+    /// <summary>
+    /// 计算平均手势
+    /// </summary>
+    /// <param name="leapGestureEntities"></param>
+    /// <returns></returns>
+    public static LeapGestureEntity FigureAverageGesEntity(List<LeapGestureEntity> leapGestureEntities)
     {
         LeapGestureEntity leapGestureEntity = new LeapGestureEntity()
         {

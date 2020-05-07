@@ -36,26 +36,24 @@ public class ChatPanel : BasePanel
     //滑动条
     public VerticalLayoutGroup parent;
 
-    //手模型
-    public GameObject leapCtrlModel;
-    private GameObject leapModel;
-
-    public GameObject leapController;
-
 
 #if UNITY_STANDALONE_WIN  //手语需要
 
     public GameObject qingKong;
     public GameObject allSend;
-
     public GameObject message;
+    public GameObject leapMotionController;
+    public GameObject leapController;
+    //手模型
+    public GameObject leapGecogModelOB;
+    private GameObject leapRecogModel;
+
 #endif
 
     private Transform mainCameraTransform;
     private Canvas canvas;
 
 
-    public GameObject leapMotionController;
 
     private Text kuSelf;
     private Text kuSystem;
@@ -74,11 +72,12 @@ public class ChatPanel : BasePanel
         userType = UserType.Normal;
 #if UNITY_STANDALONE_WIN || DEBUG
         //初始化Model
-        leapModel = Instantiate(leapCtrlModel);
-        Transform tran = leapModel.transform;
-        leapModel.transform.SetParent(mainCameraTransform);
-        leapModel.transform.localPosition = tran.position;
-        leapModel.SetActive(false);
+        leapRecogModel = Instantiate(leapGecogModelOB);
+        Transform tran = leapRecogModel.transform;
+        leapRecogModel.transform.SetParent(mainCameraTransform);
+        leapRecogModel.transform.localPosition = tran.position;
+        leapRecogModel.SetActive(false);
+        leapRecogModel.GetComponentInChildren<LeapGestureRecognize>().AddListener(OnReconized);
 
         kuSelf = GameObject.FindWithTag("kuSelf").GetComponent<Text>();
         kuSystem = GameObject.FindWithTag("kuSystem").GetComponent<Text>();
@@ -180,7 +179,6 @@ public class ChatPanel : BasePanel
             uiMng.ShowPanelMessage(UIPanelType.ChatPanel, "对方不在线,这是哥在测试");//TODO 聊天窗口测试用的
             return;
         }
-
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         string data = msIF.text + ',' + NowChatId;
         InsSelfChatItem(msIF.text);
@@ -218,7 +216,6 @@ public class ChatPanel : BasePanel
         else
         {
             userType = UserType.Normal;
-
         }
         msIF.text = string.Empty;
         syncSetTypeButton = true;
@@ -239,7 +236,6 @@ public class ChatPanel : BasePanel
             voiceButton.gameObject.SetActive(true);
         }
     }
-
 
     public UserType GetUserType()
     {
@@ -308,7 +304,7 @@ public class ChatPanel : BasePanel
             return;
         qingKong.SetActive(true);
         allSend.SetActive(true);
-        leapModel.SetActive(true);
+        leapRecogModel.SetActive(true);
         //TODO这里更改
         //leapMotionController = Instantiate(leapController);
         //Transform tran = leapMotionController.transform;
@@ -334,6 +330,12 @@ public class ChatPanel : BasePanel
     public void MesDestroy()
     {
         message.SetActive(false);
+    }
+
+    //识别事件
+    public void OnReconized(string str)
+    {
+        msIF.text += str;
     }
 #endif
 }

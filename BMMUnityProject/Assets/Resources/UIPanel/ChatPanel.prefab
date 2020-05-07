@@ -66,14 +66,14 @@ MonoBehaviour:
   content: {fileID: 2068104972969385235}
   chatScrollBar: {fileID: 7205065450732884766}
   parent: {fileID: 4648663102380729641}
-  leapCtrlModel: {fileID: 8457168241696841453, guid: c1501b1b670a3bd41960303fd227e1c9,
-    type: 3}
-  leapController: {fileID: 8457168241696841453, guid: 2ee4c3f62e6d2ca4b9af87ca841aa7b0,
-    type: 3}
   qingKong: {fileID: 6364659041041798891}
   allSend: {fileID: 5105466278588643571}
   message: {fileID: 310380684636493768}
   leapMotionController: {fileID: 0}
+  leapController: {fileID: 8457168241696841453, guid: 2ee4c3f62e6d2ca4b9af87ca841aa7b0,
+    type: 3}
+  leapGecogModelOB: {fileID: 8457168241696841453, guid: c1501b1b670a3bd41960303fd227e1c9,
+    type: 3}
   voiceButton: {fileID: 5366286353585687545}
   handButton: {fileID: 1412646165399342658}
   ctButton: {fileID: 6583735399978320162}
