@@ -66,13 +66,17 @@ MonoBehaviour:
   content: {fileID: 2068104972969385235}
   chatScrollBar: {fileID: 7205065450732884766}
   parent: {fileID: 4648663102380729641}
-  ctButton: {fileID: 8006399352392707914}
+  leapCtrlModel: {fileID: 8457168241696841453, guid: c1501b1b670a3bd41960303fd227e1c9,
+    type: 3}
   leapController: {fileID: 8457168241696841453, guid: 2ee4c3f62e6d2ca4b9af87ca841aa7b0,
     type: 3}
   qingKong: {fileID: 6364659041041798891}
   allSend: {fileID: 5105466278588643571}
   message: {fileID: 310380684636493768}
   leapMotionController: {fileID: 0}
+  voiceButton: {fileID: 5366286353585687545}
+  handButton: {fileID: 1412646165399342658}
+  ctButton: {fileID: 6583735399978320162}
 --- !u!114 &7649373471460722898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,7 +689,6 @@ GameObject:
   - component: {fileID: 7789118102773074525}
   - component: {fileID: 3630898223635468822}
   - component: {fileID: 6583735399978320162}
-  - component: {fileID: 8006399352392707914}
   m_Layer: 5
   m_Name: changeUserTypeBtn
   m_TagString: Untagged
@@ -798,25 +801,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8006399352392707914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238336727339177374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 051233f0e3db26947b222d6b1a68c026, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonText: {fileID: 5377161439810771355}
-  cPanel: {fileID: 7832747014618501718}
-  icon: {fileID: 0}
-  hand: {fileID: 0}
-  voice: {fileID: 0}
-  voiceButoon: {fileID: 5366286353585687545}
-  handButoon: {fileID: 1412646165399342658}
 --- !u!1 &1663697969022357926
 GameObject:
   m_ObjectHideFlags: 0

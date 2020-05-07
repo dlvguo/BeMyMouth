@@ -5,8 +5,15 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
+public enum UserType
+{
+    Normal,
+    Deaf
+}
+
 public class ChatPanel : BasePanel
 {
+
     //当前聊天用户ID
     public int NowChatId { get; set; } = -1;
     //聊天用户名称
@@ -30,10 +37,14 @@ public class ChatPanel : BasePanel
 
     //滑动条
     public VerticalLayoutGroup parent;
-    //更改类型
-    public ChangeChatUserTypeButton ctButton;
+
+    //手模型
+    public GameObject leapCtrlModel;
+    private GameObject leapModel;
 
     public GameObject leapController;
+
+
 #if UNITY_STANDALONE_WIN  //手语需要
 
     public GameObject qingKong;
@@ -45,30 +56,39 @@ public class ChatPanel : BasePanel
     private Transform mainCameraTransform;
     private Canvas canvas;
 
+
     public GameObject leapMotionController;
 
     private Text kuSelf;
     private Text kuSystem;
     private UserType userType;
 
+    //俩个Button
+    public Button voiceButton;
+    public Button handButton;
+    public Button ctButton;
+
     private void Awake()
     {
 
         mainCameraTransform = GameObject.Find("Main Camera").transform;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        //chatScrollBar.onValueChanged.AddListener((v) => StartCoroutine("InsSrollBar"));
         userType = UserType.Normal;
-#if UNITY_STANDALONE_WIN||DEBUG
+#if UNITY_STANDALONE_WIN || DEBUG
+        //初始化Model
+        leapModel = Instantiate(leapCtrlModel);
+        Transform tran = leapModel.transform;
+        leapModel.transform.SetParent(mainCameraTransform);
+        leapModel.transform.localPosition = tran.position;
+        leapModel.SetActive(false);
+
         kuSelf = GameObject.FindWithTag("kuSelf").GetComponent<Text>();
         kuSystem = GameObject.FindWithTag("kuSystem").GetComponent<Text>();
         qingKong.SetActive(false);
         allSend.SetActive(false);
         message.SetActive(false);
+
 #endif
-        //        msIF.onValueChanged.AddListener((data) =>
-        //        {
-        //            (transform as RectTransform).localPosition += new Vector3(0, 300, 0);
-        //        });
     }
 
     public override void OnExit()
@@ -111,6 +131,12 @@ public class ChatPanel : BasePanel
             InsFrChatItem(syncInsFrChatItemMessage);
             syncInsFrChatItemMessage = null;
         }
+
+        if (syncSetTypeButton)
+        {
+            SetTypeButton(userType);
+            syncSetTypeButton = false;
+        }
     }
 
     //删除聊天消息
@@ -126,7 +152,6 @@ public class ChatPanel : BasePanel
     {
         //添加返回按钮
         transform.Find("frName/back").GetComponent<Button>().onClick.AddListener(() => { uiMng.PopPanel(); });
-        ctButton = transform.Find("ms/changeUserTypeBtn").GetComponent<ChangeChatUserTypeButton>();
         ctButton.GetComponent<Button>().onClick.AddListener(ChangeChatUserType);
         frName = transform.Find("frName/Text").GetComponent<Text>();
         msIF = transform.Find("ms/msIF").GetComponent<InputField>();
@@ -184,6 +209,7 @@ public class ChatPanel : BasePanel
         syncInsFrChatItemMessage = message;
     }
 
+    bool syncSetTypeButton = false;
     //改变聊天用户模式
     public void ChangeChatUserType()
     {
@@ -194,9 +220,26 @@ public class ChatPanel : BasePanel
         else
         {
             userType = UserType.Normal;
+
         }
-        ctButton.OnUserTypeChange(userType);
+        msIF.text = string.Empty;
+        syncSetTypeButton = true;
+        //ctButton.OnUserTypeChange(userType);
         ChangeChatItemsButtonType(userType);
+    }
+
+    private void SetTypeButton(UserType ut)
+    {
+        if (ut == UserType.Deaf)
+        {
+            voiceButton.gameObject.SetActive(false);
+            handButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            handButton.gameObject.SetActive(false);
+            voiceButton.gameObject.SetActive(true);
+        }
     }
 
 
@@ -259,7 +302,6 @@ public class ChatPanel : BasePanel
     }
 #if UNITY_STANDALONE_WIN 
     //TODO 估计是手语版本聊天窗口
-    //实例话LeapController 并且添加位置 注意这里明晚更改
     public void OnHandClick()
     {
         message.SetActive(true);
@@ -268,11 +310,12 @@ public class ChatPanel : BasePanel
             return;
         qingKong.SetActive(true);
         allSend.SetActive(true);
+        leapModel.SetActive(true);
         //TODO这里更改
-        leapMotionController = Instantiate(leapController);
-        Transform tran = leapMotionController.transform;
-        leapMotionController.transform.SetParent(mainCameraTransform);
-        leapMotionController.transform.localPosition = tran.position;
+        //leapMotionController = Instantiate(leapController);
+        //Transform tran = leapMotionController.transform;
+        //leapMotionController.transform.SetParent(mainCameraTransform);
+        //leapMotionController.transform.localPosition = tran.position;
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         kuSelf.text = "使用自制手势库";
         kuSystem.text = "使用默认手势库";

@@ -36,18 +36,19 @@ public class handControllerDestroy : MonoBehaviour
             return;
         if (CreateText.instance != null && CreateText.instance.texts == null)
             return;
-        TextCrete.instance.Width = 0;
-        TextCrete.instance.Height = 0;
-        foreach (var item in TextCrete.instance.texts)
-        {
-            //2  2 TextCrete.instance.texts.Remove(item);
-            Destroy(item.gameObject);
-        }
+
+        //TextCrete.instance.Width = 0;
+        //TextCrete.instance.Height = 0;
+        //foreach (var item in TextCrete.instance.texts)
+        //{
+        //    //2  2 TextCrete.instance.texts.Remove(item);
+        //    Destroy(item.gameObject);
+        //}
+        //TextCrete.instance.texts.Clear();
 
         kuSelf.text = "预留";
         kuSystem.text = "预留";
 
-        TextCrete.instance.texts.Clear();
         Destroy(GameObject.Find("LeapController(Clone)"));
         qingKong.SetActive(false);
         allSend.SetActive(false);
