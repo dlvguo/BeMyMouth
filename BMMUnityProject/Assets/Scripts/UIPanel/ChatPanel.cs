@@ -164,11 +164,10 @@ public class ChatPanel : BasePanel
         frName.text = name;
     }
 
-    //更新下Size
+    //初始化SizeSize
     public void InitContentSize()
     {
         content.sizeDelta = Vector2.zero;
-
     }
 
     //发送消息
