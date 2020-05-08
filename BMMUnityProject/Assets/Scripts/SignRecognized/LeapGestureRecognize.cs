@@ -28,15 +28,21 @@ public class LeapGestureRecognize : MonoBehaviour
 
 
     // Update is called once per frame
+    private float timer = 0;
     void Update()
     {
         //Leap连接才可以
         if (GetLeapController().IsConnected)
         {
-            //手势识别
-            var frame = GetLeapController().Frame();
-            if (FilterGes(frame))
-                RecognizeGes(frame);
+            if (timer > 3)
+            {
+                //手势识别
+                var frame = GetLeapController().Frame();
+                if (FilterGes(frame))
+                    RecognizeGes(frame);
+                timer = 0;
+            }
+            timer += Time.deltaTime;
 
         }
     }

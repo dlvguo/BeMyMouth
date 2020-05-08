@@ -299,11 +299,13 @@ public class ChatPanel : BasePanel
     public void OnHandClick()
     {
         message.SetActive(true);
-        Invoke("MesDestroy", 1);
+        Invoke("MesQuit", 1);
         if (leapMotionController)
             return;
-        qingKong.SetActive(true);
-        allSend.SetActive(true);
+        //暂时不用吧
+        //qingKong.SetActive(true);
+        //allSend.SetActive(true);
+
         leapRecogModel.SetActive(true);
         //TODO这里更改
         //leapMotionController = Instantiate(leapController);
@@ -327,7 +329,7 @@ public class ChatPanel : BasePanel
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
     }
 
-    public void MesDestroy()
+    public void MesQuit()
     {
         message.SetActive(false);
     }
