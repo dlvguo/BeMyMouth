@@ -5,7 +5,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 
 [System.Serializable]
-public class Manager : MonoBehaviour
+public class AniManager : MonoBehaviour
 {
 
     //动画执行
@@ -37,23 +37,23 @@ public class Manager : MonoBehaviour
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
     }
 
-    private void Update()//保证场景只有一个动画播放
-    {
-        //if (isPlay == false)
-        //    this.gameObject.tag = "Button";
-        //Touchs = GameObject.FindGameObjectsWithTag("Button");
-        //GameObject onPlay = GameObject.FindGameObjectWithTag("OnPlay");
-        //if (isPlay == true)
-        //    foreach (GameObject item in Touchs)
-        //    {
-        //        item.SetActive(false);
-        //    }
-        //if (isPlay == false)
-        //    foreach (GameObject item in Touchs)
-        //    {
-        //        item.SetActive(true);
-        //    }
-    }
+    //private void Update()//保证场景只有一个动画播放
+    //{
+    //    //if (isPlay == false)
+    //    //    this.gameObject.tag = "Button";
+    //    //Touchs = GameObject.FindGameObjectsWithTag("Button");
+    //    //GameObject onPlay = GameObject.FindGameObjectWithTag("OnPlay");
+    //    //if (isPlay == true)
+    //    //    foreach (GameObject item in Touchs)
+    //    //    {
+    //    //        item.SetActive(false);
+    //    //    }
+    //    //if (isPlay == false)
+    //    //    foreach (GameObject item in Touchs)
+    //    //    {
+    //    //        item.SetActive(true);
+    //    //    }
+    //}
 
 
 

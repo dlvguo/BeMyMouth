@@ -8,7 +8,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class PlayAnima : MonoBehaviour {
 
-    private Manager manager;
+    private AniManager manager;
 
     private InputField Input;
 
@@ -16,7 +16,7 @@ public class PlayAnima : MonoBehaviour {
 
     private void Start()
     {
-        manager = GameObject.Find("AnimManager").GetComponent<Manager>();
+        manager = GameObject.Find("AnimManager").GetComponent<AniManager>();
         Input = GetComponentInChildren<InputField>();
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         //this.GetComponent<Button>().onClick.AddListener(OnClick);

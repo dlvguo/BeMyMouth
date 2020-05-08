@@ -17,13 +17,8 @@ public class LeapGesturesTeacher : MonoBehaviour
     //记录最后一帧的手势
     private long lastFrameId = 0;
 
-    public InputField gestureInputField;
-
-    public Button tipBtu;
-    public Button exitBtu;
 
     //正确和错误的图片显示
-    public GameObject yesImg, noImg;
     private List<LeapGestureEntity> leapGestureEntities;
     LeapGestureClassifier gestureClassifier;
 
@@ -37,14 +32,7 @@ public class LeapGesturesTeacher : MonoBehaviour
 
     void Start()
     {
-        var item = LeapGestureClassifier.GetInstance;
-        yesImg.SetActive(false);
-        noImg.SetActive(false);
-        tipBtu.gameObject.SetActive(false);
-        //关闭
-        tipBtu.onClick.AddListener(() => tipBtu.gameObject.SetActive(false));
         gestureClassifier = LeapGestureClassifier.GetInstance;
-        exitBtu.onClick.AddListener(() => Facade.Instance.PopUIPanel());
     }
 
     // Update is called once per frame
@@ -53,28 +41,7 @@ public class LeapGesturesTeacher : MonoBehaviour
         //Leap连接才可以
         if (GetLeapController().IsConnected)
         {
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                if (gestureInputField.text == string.Empty)
-                {
-                    tipBtu.gameObject.SetActive(true);
-                }
-                else
-                {
-                    RecognizeGes(GetLeapController().Frame());
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.P))
-            {
-                if (gestureInputField.text == string.Empty)
-                {
-                    tipBtu.gameObject.SetActive(true);
-                }
-                else
-                {
 
-                }
-            }
         }
     }
 
@@ -83,16 +50,16 @@ public class LeapGesturesTeacher : MonoBehaviour
 
     void RecognizeGes(Frame frame)
     {
-        var entity = LeapRecognizeUtil.BuildLeapGestureEntity(frame);
-        var str = gestureClassifier.GesRecognized(entity);
-        if (str.Equals(gestureInputField.text))
-        {
-            yesImg.SetActive(true);
-        }
-        else
-        {
-            noImg.SetActive(true);
-        }
+        //var entity = LeapRecognizeUtil.BuildLeapGestureEntity(frame);
+        //var str = gestureClassifier.GesRecognized(entity);
+        //if (str.Equals(gestureInputField.text))
+        //{
+        //    yesImg.SetActive(true);
+        //}
+        //else
+        //{
+        //    noImg.SetActive(true);
+        //}
 
     }
 
