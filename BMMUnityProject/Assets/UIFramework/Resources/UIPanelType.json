@@ -39,6 +39,14 @@
     {
       "panelTypeString": "SetInfoPanel",
       "path": "UIPanel/SetInfoPanel"
+    },
+    {
+      "panelTypeString": "TeachPanel",
+      "path": "UIPanel/TeachPanel"
+    },
+    {
+      "panelTypeString": "SaveGesPanel",
+      "path": "UIPanel/TeachPanel"
     }
   ]
 }

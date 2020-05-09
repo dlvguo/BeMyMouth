@@ -15,5 +15,7 @@ public enum UIPanelType
     DisplayPanel,
     AnChatPanel,
     SearchFriendPanel,
-    SetInfoPanel
+    SetInfoPanel,
+    TeachPanel,
+    SaveGesPanel
 }

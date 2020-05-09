@@ -8,7 +8,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class PlayAnima : MonoBehaviour {
 
-    private AniManager manager;
+    private AniManager aniManager;
 
     private InputField Input;
 
@@ -16,7 +16,7 @@ public class PlayAnima : MonoBehaviour {
 
     private void Start()
     {
-        manager = GameObject.Find("AnimManager").GetComponent<AniManager>();
+        aniManager = GameObject.Find("AnimManager").GetComponent<AniManager>();
         Input = GetComponentInChildren<InputField>();
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         //this.GetComponent<Button>().onClick.AddListener(OnClick);
@@ -24,7 +24,7 @@ public class PlayAnima : MonoBehaviour {
 
     private void Update()
     {
-        if(manager.IsPlay == false )
+        if(aniManager.IsPlay == false )
         {
             gameObject.tag = "Button";
         }
@@ -32,9 +32,9 @@ public class PlayAnima : MonoBehaviour {
 
     public void OnClick()
     {
-        if (manager.IsPlay == false)
+        if (aniManager.IsPlay == false)
         {
-            manager.ProcessQueue(Input.text.ToCharArray());
+            aniManager.ProcessQueue(Input.text.ToCharArray());
             this.gameObject.tag = "OnPlay";
         }
         canvas.renderMode = RenderMode.ScreenSpaceCamera;

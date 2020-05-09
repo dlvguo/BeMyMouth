@@ -90,7 +90,10 @@ public class UIManager : BaseManager
         if (panelStack.Count > 0)
         {
             BasePanel topPanel = panelStack.Peek();
-            topPanel.OnPause();
+            if (topPanel)
+                topPanel.OnPause();
+            else
+                panelStack.Pop();
         }
 
         BasePanel panel = GetPanel(panelType);
@@ -144,7 +147,7 @@ public class UIManager : BaseManager
     }
 
 
-
+    //同步放入面板
     public void PushPanelSync(UIPanelType uiPanelType)
     {
         panelTypeToPush = uiPanelType;
@@ -247,6 +250,17 @@ public class UIManager : BaseManager
         {
             return panel;
         }
+    }
+
+    //移除字典
+    public void RemovePanelDict(UIPanelType uIPanelType)
+    {
+        if (panelDict == null)
+        {
+            panelDict = new Dictionary<UIPanelType, BasePanel>();
+        }
+        panelDict.Remove(uIPanelType);
+
     }
 
     [Serializable]

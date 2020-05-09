@@ -981,7 +981,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1939,7 +1939,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000010510907}
+  m_AnchoredPosition: {x: 0, y: -0.00001552701}
   m_SizeDelta: {x: 0, y: 65}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8500228254050231940
@@ -2293,7 +2293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7201225556168249787
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2687,7 +2687,8 @@ MonoBehaviour:
   content: {fileID: 690952511655757515}
   sfButton: {fileID: 5632380821336695080}
   msgButton: {fileID: 0}
-  infoButton: {fileID: 0}
+  setInfoButton: {fileID: 0}
+  teachButton: {fileID: 0}
 --- !u!114 &3895779721411953598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2922,15 +2923,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8544308682807136762}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5807526978315456565}
-        m_MethodName: OnClickSystem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

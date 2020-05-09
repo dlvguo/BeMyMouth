@@ -21,7 +21,9 @@ public class MainPanel : BasePanel
 
     [SerializeField] private Button sfButton;
     [SerializeField] private Button msgButton;
-    [SerializeField] private Button infoButton;
+    [SerializeField] private Button setInfoButton;
+    [SerializeField] private Button teachButton;
+
 
     private List<FriendItem> friendItems = new List<FriendItem>();
     private List<int> notificationsIds = new List<int>();
@@ -86,8 +88,12 @@ public class MainPanel : BasePanel
         getFriendListRequest = GetComponent<GetFriendListRequest>();
         msgButton = transform.Find("msgButton").GetComponent<Button>();
         msgButton.onClick.AddListener(() => { uiMng.PushPanel(UIPanelType.ChatPanel); });
-        infoButton = transform.Find("InfoSetButton").GetComponent<Button>();
-        infoButton.onClick.AddListener(() => uiMng.PushPanel(UIPanelType.SetInfoPanel));
+        setInfoButton = transform.Find("InfoSetButton").GetComponent<Button>();
+        setInfoButton.onClick.AddListener(() => uiMng.PushPanel(UIPanelType.SetInfoPanel));
+        //添加
+        teachButton = transform.Find("GestureStudyButton").GetComponent<Button>();
+        teachButton.onClick.AddListener(() => uiMng.PushPanel(UIPanelType.TeachPanel));
+        //寻找朋友Item
         sfButton.onClick.AddListener(() => { uiMng.PushPanel(UIPanelType.SearchFriendPanel); });
         transform.Find("quitButton").GetComponent<Button>().onClick.AddListener(() =>
         {
