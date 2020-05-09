@@ -17,5 +17,5 @@ public enum UIPanelType
     SearchFriendPanel,
     SetInfoPanel,
     TeachPanel,
-    SaveGesPanel
+    RecoderPanel
 }

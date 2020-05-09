@@ -45,8 +45,8 @@
       "path": "UIPanel/TeachPanel"
     },
     {
-      "panelTypeString": "SaveGesPanel",
-      "path": "UIPanel/TeachPanel"
+      "panelTypeString": "RecoderPanel",
+      "path": "UIPanel/RecoderPanel"
     }
   ]
 }

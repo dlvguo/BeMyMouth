@@ -744,18 +744,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5289084414943554335}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5807526978315456565}
-        m_MethodName: OnClickSelf
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2428780070656979762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,7 +1928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00001552701}
+  m_AnchoredPosition: {x: 0, y: -0.000030755997}
   m_SizeDelta: {x: 0, y: 65}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8500228254050231940
@@ -2689,6 +2678,7 @@ MonoBehaviour:
   msgButton: {fileID: 0}
   setInfoButton: {fileID: 0}
   teachButton: {fileID: 0}
+  recoderButton: {fileID: 6823877789658636848}
 --- !u!114 &3895779721411953598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2732,7 +2722,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8121864020967920052}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97fb57060c505794e85e2f49cd1c8287, type: 3}
   m_Name: 

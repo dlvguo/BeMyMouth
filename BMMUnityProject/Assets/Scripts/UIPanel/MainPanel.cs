@@ -23,6 +23,7 @@ public class MainPanel : BasePanel
     [SerializeField] private Button msgButton;
     [SerializeField] private Button setInfoButton;
     [SerializeField] private Button teachButton;
+    [SerializeField] private Button recoderButton;
 
 
     private List<FriendItem> friendItems = new List<FriendItem>();
@@ -93,6 +94,9 @@ public class MainPanel : BasePanel
         //添加
         teachButton = transform.Find("GestureStudyButton").GetComponent<Button>();
         teachButton.onClick.AddListener(() => uiMng.PushPanel(UIPanelType.TeachPanel));
+
+        recoderButton = transform.Find("DefineGestureButton").GetComponent<Button>();
+        recoderButton.onClick.AddListener(() => uiMng.PushPanel(UIPanelType.RecoderPanel));
         //寻找朋友Item
         sfButton.onClick.AddListener(() => { uiMng.PushPanel(UIPanelType.SearchFriendPanel); });
         transform.Find("quitButton").GetComponent<Button>().onClick.AddListener(() =>
