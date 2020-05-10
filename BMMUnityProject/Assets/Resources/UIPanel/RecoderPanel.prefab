@@ -165,6 +165,8 @@ MonoBehaviour:
   gestureInputField: {fileID: 8710517272230743888}
   tipBtu: {fileID: 8710517273028389655}
   exitBtn: {fileID: 8710517273622281687}
+  leapRecoderModelOB: {fileID: 8457168241696841453, guid: c16dd4e987f93cb45b5b1e4dfa1d92e4,
+    type: 3}
 --- !u!1 &8710517272230743902
 GameObject:
   m_ObjectHideFlags: 0

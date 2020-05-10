@@ -47,7 +47,8 @@ public class RecoderPanel : BasePanel
     {
         base.OnEnter();
         this.gameObject.SetActive(true);
-        leapRecoderModel.SetActive(true);
+        if (leapRecoderModel)
+            leapRecoderModel.SetActive(true);
 
     }
 

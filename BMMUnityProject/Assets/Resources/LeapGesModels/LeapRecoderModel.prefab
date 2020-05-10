@@ -14968,7 +14968,7 @@ GameObject:
   - component: {fileID: 6966864064644530849}
   - component: {fileID: 6966864064644530850}
   - component: {fileID: 6966864064644530851}
-  - component: {fileID: 4191461373073434085}
+  - component: {fileID: 2650287294816559198}
   m_Layer: 0
   m_Name: LeapHandController
   m_TagString: leap
@@ -15061,7 +15061,7 @@ MonoBehaviour:
     HandPostProcesses:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &4191461373073434085
+--- !u!114 &2650287294816559198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15070,9 +15070,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6966864064644530855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84e8dd4897668d44cbb9fe114890e55d, type: 3}
+  m_Script: {fileID: 11500000, guid: adc5d8e2deb80274b9d595e14cd1bd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gestureInputField: {fileID: 0}
+  tipBtu: {fileID: 0}
 --- !u!1 &6966864064648538700
 GameObject:
   m_ObjectHideFlags: 0
@@ -18196,7 +18198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8624245927570763049}
   m_Layer: 0
-  m_Name: LeapStudyModel
+  m_Name: LeapRecoderModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
