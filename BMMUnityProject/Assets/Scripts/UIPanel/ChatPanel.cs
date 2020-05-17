@@ -312,8 +312,6 @@ public class ChatPanel : BasePanel
         //leapMotionController.transform.SetParent(mainCameraTransform);
         //leapMotionController.transform.localPosition = tran.position;
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
-        kuSelf.text = "使用自制手势库";
-        kuSystem.text = "使用默认手势库";
     }
 
     //清空

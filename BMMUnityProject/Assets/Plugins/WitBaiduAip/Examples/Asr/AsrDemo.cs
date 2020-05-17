@@ -60,7 +60,7 @@ public class AsrDemo : MonoBehaviour
             }
             else
             {
-                DescriptionText.text = "";//TODO 判断语音是否识别成功 不知道为什么有bug 应该是有异步的实现吧
+                DescriptionText.text = "";//TODO 判断语音是否识别成功
             }
 
             StartButton.gameObject.SetActive(true);

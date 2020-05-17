@@ -1,9 +1,4 @@
-﻿/*
- * 作者：关尔
- * 时间：2017年12月1日
- * 关注“洪流学堂”公众号，让你快人几步
- */
-
+﻿
 using System;
 using System.Collections;
 using UnityEngine;

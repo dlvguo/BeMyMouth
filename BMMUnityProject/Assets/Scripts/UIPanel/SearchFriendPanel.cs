@@ -78,7 +78,7 @@ public class SearchFriendPanel : BasePanel
     }
 
     private List<string> names = new List<string>();
-    private bool isNotTimeTODM = true;
+    private bool isNotTimeTODM = false;
 
     private void Update()
     {
@@ -91,13 +91,16 @@ public class SearchFriendPanel : BasePanel
         //        }
 
         { //TODO 搜索朋友有问题这里
-            for (int i = 1; i < names.Count; i++)
+            if (isNotTimeTODM)
             {
-                InsSerarchFriendItem(names[i], names[0]);
-            }
+                for (int i = 0; i < names.Count; i++)
+                {
+                    InsSerarchFriendItem(names[i], names[0]);
+                }
 
-            names.Clear();
-            isNotTimeTODM = true;
+                names.Clear();
+                isNotTimeTODM = false;
+            }
         }
     }
 
@@ -127,6 +130,7 @@ public class SearchFriendPanel : BasePanel
     {
         GameObject g = Instantiate(sFItem);
         g.transform.SetParent(content);
+        g.transform.localScale = new Vector3(1f, 1f, 1f);
         content.sizeDelta = new Vector2(content.sizeDelta.x, +content.sizeDelta.y + 101f);
         g.GetComponent<SearchFriendItem>().Structure(username, nickName, uiMng, facade);
         sfItems.Add(g.GetComponent<SearchFriendItem>());

@@ -154,7 +154,7 @@ namespace BMMServer.DBS
                 {
                     foreach (var user in db.Users)
                     {
-                        if (user.NickName.Equals(nickname))
+                        if (user.NickName.Contains(nickname))
                             return user.UserName;
                     }
                 }
@@ -162,7 +162,6 @@ namespace BMMServer.DBS
             }
             catch (Exception e)
             {
-
 
                 return string.Empty;
             }
@@ -282,6 +281,28 @@ namespace BMMServer.DBS
             {
                 Console.WriteLine("创建用户失败");
                 return false;
+            }
+        }
+
+        public string SearchFriend(string name)
+        {
+            try
+            {
+                string str = string.Empty;
+                using (BeMyMouthDB db = new BeMyMouthDB())
+                {
+                    foreach (var user in db.Users)
+                    {
+                        if (user.NickName.Contains(name))
+                            str += user.NickName + ',';
+                    }
+                }
+                return str;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("创建用户失败");
+                return string.Empty;
             }
         }
 
